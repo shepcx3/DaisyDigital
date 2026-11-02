@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daisy Digital — Creative by nature</title>
   <meta name="description" content="Daisy Digital: social media, content, strategy and consulting. Chronically online, creatively curious and always a few scrolls ahead.">
-  <meta name="theme-color" content="#8b5cf6">
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Daisy Digital — Creative by nature">
+  <meta property="og:description" content="A social-first creative studio. We make brands look good, sound cool, and stay on everyone's feed.">
+  <meta property="og:image" content="assets/daisy.svg"><!-- TODO: swap for a 1200x630 share image -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- intro plays once per visit; skipped for reduced motion. Set before paint so nothing flashes. -->
+  <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&!sessionStorage.getItem("dd-intro"))document.documentElement.classList.add("intro")}catch(e){}</script>
   <link rel="icon" href="assets/daisy.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,79 +20,110 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
   <canvas id="glitter" aria-hidden="true"></canvas>
 
+  <!-- INTRO: bee lands on a daisy, the wordmark appears, then the lockup falls back into the header logo -->
+  <div class="intro-stage" aria-hidden="true">
+    <div class="intro-veil"></div>
+    <div class="intro-lockup">
+      <span class="intro-flower">
+        <img src="assets/daisy.svg" alt="" class="intro-daisy">
+        <svg class="intro-bee" viewBox="0 0 60 50">
+          <ellipse class="wing" cx="24" cy="12" rx="10" ry="12" fill="#e0f2fe" opacity=".9" stroke="#93c5fd"/>
+          <ellipse class="wing" cx="36" cy="12" rx="10" ry="12" fill="#e0f2fe" opacity=".9" stroke="#93c5fd"/>
+          <ellipse cx="30" cy="30" rx="20" ry="14" fill="#facc15"/>
+          <path d="M22 17 Q19 30 22 43 M32 16 Q29 30 32 44" stroke="#1f1633" stroke-width="5" fill="none"/>
+          <circle cx="46" cy="28" r="9" fill="#1f1633"/>
+          <circle cx="49" cy="26" r="2" fill="#fff"/>
+          <path d="M10 30 L4 30" stroke="#1f1633" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="intro-word">Daisy Digital</span>
+    </div>
+  </div>
+
   <header class="nav">
-    <a href="#about" class="logo" aria-label="Daisy Digital home">
+    <a href="#top" class="logo" aria-label="Daisy Digital home">
       <img src="assets/daisy.svg" alt="" width="34" height="34" class="logo-daisy">
-      <span>Daisy Digital</span>
+      <span class="logo-word">Daisy Digital</span>
     </a>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
     </button>
-    <nav class="nav-links">
+    <nav class="nav-links" id="nav-links" aria-label="Main">
       <a href="#about">About</a>
-      <a href="#work">Our Work</a>
+      <a href="#work">Work</a>
       <a href="#girls">The Girls</a>
       <a href="#contact">Contact</a>
-      <a href="#growing" class="pill">We're Growing ✿</a>
+      <a href="#growing">Careers</a>
+      <a href="#contact" class="pill">Give us a buzz</a>
     </nav>
   </header>
 
-  <main>
-    <!-- ABOUT / HERO -->
-    <section id="about" class="hero">
-      <div class="float-daisies" aria-hidden="true">
-        <img src="assets/daisy.svg" alt="" class="fd fd1">
-        <img src="assets/daisy.svg" alt="" class="fd fd2">
-        <img src="assets/daisy.svg" alt="" class="fd fd3">
-        <img src="assets/daisy.svg" alt="" class="fd fd4">
-        <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span>
-        <span class="sparkle s3">✦</span><span class="sparkle s4">✧</span>
-      </div>
-
-      <p class="eyebrow reveal">✧ creative by nature ✧</p>
-      <h1 class="hero-title reveal">Daisy<br><span>Digital</span></h1>
-      <ul class="services reveal" aria-label="What we do">
-        <li>Social Media</li><li>Content</li><li>Strategy</li><li>Consulting</li>
-      </ul>
-
-      <div class="about-card reveal">
-        <p class="about-lead">Chronically online, creatively curious and always a few scrolls ahead.</p>
-        <p>We make brands look good, sound cool and yes, we're probably already working on your next idea.</p>
-        <p class="about-motto">Stay cute. Stay current. Stay on everyone's feed.</p>
-        <p class="signoff">Love, Daisy Digital <span>xo</span></p>
-      </div>
-
-      <a href="#work" class="scroll-hint" aria-label="Scroll to our work">scroll ↓</a>
-    </section>
-
-    <!-- OUR WORK -->
-    <section id="work" class="work">
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>bloom ✿ glossier ✿ lay low ✿ strong ✿ holistically hip ✿ dreamers club ✿ </span>
-          <span>bloom ✿ glossier ✿ lay low ✿ strong ✿ holistically hip ✿ dreamers club ✿ </span>
+  <main id="main">
+    <!-- HERO -->
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="hero-title reveal">Creative by nature.</h1>
+        <p class="hero-sub reveal">Daisy Digital is a social-first creative studio. We make brands look good, sound cool, and stay on everyone&rsquo;s feed.</p>
+        <div class="hero-ctas reveal">
+          <a href="#work" class="btn">See our work</a>
+          <a href="#girls" class="btn btn-ghost">Meet the girls</a>
         </div>
       </div>
 
-      <h2 class="section-title reveal">Our Work</h2>
-      <p class="section-sub reveal">brands we've had the pleasure of making look good</p>
+      <div class="hero-art" aria-hidden="true">
+        <div class="chrome-blob"></div>
+        <img src="assets/daisy.svg" alt="" class="hero-daisy">
+        <img src="assets/daisy.svg" alt="" class="fd fd1">
+        <img src="assets/daisy.svg" alt="" class="fd fd2">
+        <img src="assets/daisy.svg" alt="" class="fd fd3">
+        <svg class="px-sparkle ps1" viewBox="0 0 7 7"><path d="M3 0h1v3h3v1H4v3H3V4H0V3h3z"/></svg>
+        <svg class="px-sparkle ps2" viewBox="0 0 7 7"><path d="M3 0h1v3h3v1H4v3H3V4H0V3h3z"/></svg>
+        <svg class="px-sparkle ps3" viewBox="0 0 7 7"><path d="M3 0h1v3h3v1H4v3H3V4H0V3h3z"/></svg>
+        <span class="sticker st-heart">&hearts; online now</span>
+      </div>
+    </section>
 
+    <div class="ticker" role="marquee" aria-label="Stay cute. Stay current. Stay on everyone's feed.">
+      <div class="ticker-track" aria-hidden="true">
+        <span>STAY CUTE &bull; STAY CURRENT &bull; STAY ON EVERYONE&rsquo;S FEED &bull; STAY CUTE &bull; STAY CURRENT &bull; STAY ON EVERYONE&rsquo;S FEED &bull;&nbsp;</span>
+        <span>STAY CUTE &bull; STAY CURRENT &bull; STAY ON EVERYONE&rsquo;S FEED &bull; STAY CUTE &bull; STAY CURRENT &bull; STAY ON EVERYONE&rsquo;S FEED &bull;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div class="about-card reveal">
+        <span class="badge">Creative by nature.</span>
+        <h2 id="about-title" class="about-lead">Chronically online, creatively curious and always a few scrolls ahead.</h2>
+        <p>We make brands look good, sound cool and yes, we&rsquo;re probably already working on your next idea.</p>
+        <p class="about-motto">Stay cute. Stay current. Stay on everyone&rsquo;s feed.</p>
+        <p class="signoff">Love, Daisy Digital <span>xo</span></p>
+      </div>
+    </section>
+
+    <!-- OUR WORK -->
+    <section id="work" class="work" aria-labelledby="work-title">
+      <h2 id="work-title" class="section-title reveal">Our Work</h2>
+      <p class="section-sub reveal">Brands we&rsquo;ve worked with.</p>
+
+      <!-- placeholder logo tiles: swap .brand-mark for real logos when we have them -->
       <ul class="brand-grid">
-        <li class="brand reveal" style="--c:#f9a8d4"><span class="brand-name">Bloom</span><span class="brand-tag">social + content</span></li>
-        <li class="brand reveal" style="--c:#fbcfe8"><span class="brand-name">Glossier</span><span class="brand-tag">content</span></li>
-        <li class="brand reveal" style="--c:#c4b5fd"><span class="brand-name">Lay Low</span><span class="brand-tag">strategy</span></li>
-        <li class="brand reveal" style="--c:#a5b4fc"><span class="brand-name">Strong</span><span class="brand-tag">social</span></li>
-        <li class="brand reveal" style="--c:#bbf7d0"><span class="brand-name">Holistically Hip</span><span class="brand-tag">consulting</span></li>
-        <li class="brand reveal" style="--c:#fde68a"><span class="brand-name">Dreamers Club</span><span class="brand-tag">campaigns</span></li>
-        <li class="brand brand-more reveal"><span class="brand-name">+ more</span><span class="brand-tag">yours could be next ✧</span></li>
+        <li class="brand reveal" style="--c:#fbcfe8"><span class="brand-mark" aria-hidden="true">B</span><span class="brand-name">Bloom</span></li>
+        <li class="brand reveal" style="--c:#fce7f3"><span class="brand-mark" aria-hidden="true">G</span><span class="brand-name">Glossier</span></li>
+        <li class="brand reveal" style="--c:#e9d5ff"><span class="brand-mark" aria-hidden="true">LL</span><span class="brand-name">Lay Low</span></li>
+        <li class="brand reveal" style="--c:#ddd6fe"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Strong</span></li>
+        <li class="brand reveal" style="--c:#fdf2f8"><span class="brand-mark" aria-hidden="true">HH</span><span class="brand-name">Holistically Hip</span></li>
+        <li class="brand reveal" style="--c:#f3e8ff"><span class="brand-mark" aria-hidden="true">DC</span><span class="brand-name">Dreamers Club</span></li>
+        <li class="brand brand-more reveal"><span class="brand-name">+ more</span><span class="brand-tag">yours could be next</span></li>
       </ul>
     </section>
 
     <!-- THE GIRLS -->
-    <section id="girls" class="girls">
-      <h2 class="section-title reveal">The Girls</h2>
+    <section id="girls" class="girls" aria-labelledby="girls-title">
+      <h2 id="girls-title" class="section-title reveal">The Girls</h2>
       <p class="section-sub reveal">the brains (and the tabs) behind it all</p>
 
       <div class="profiles">
@@ -133,14 +171,15 @@
             </div>
             <div class="profile-info">
               <h3>ERICA</h3>
-              <p class="profile-role">the girl with 473 tabs open</p>
+              <p class="profile-role">Professional trend stalker</p>
               <dl class="stats">
-                <div><dt>Mood:</dt><dd>trend stalking ✧</dd></div>
+                <div><dt>Mood:</dt><dd>trend stalking</dd></div>
                 <div><dt>Status:</dt><dd><span class="dot"></span> chronically online</dd></div>
               </dl>
             </div>
           </div>
-          <p class="bio">Determined to stay young, hip and culturally aware — a professional trend stalker. Chronically online and convinced she knows what's cool before everyone else does.</p>
+          <p class="bio">The girl with 473 tabs open. Determined to stay young, hip and culturally aware. Professional trend stalker. Chronically online and convinced she knows what&rsquo;s cool before everyone else does.</p>
+          <span class="sticker st-tabs" aria-hidden="true">473 tabs</span>
         </article>
 
         <!-- BRI -->
@@ -179,22 +218,23 @@
             </div>
             <div class="profile-info">
               <h3>BRI</h3>
-              <p class="profile-role">the everything girl</p>
+              <p class="profile-role">CEO of moving in silence</p>
               <dl class="stats">
-                <div><dt>Mood:</dt><dd>moving in silence 🤫</dd></div>
-                <div><dt>Status:</dt><dd><span class="dot"></span> going viral (probably)</dd></div>
+                <div><dt>Mood:</dt><dd>moving in silence</dd></div>
+                <div><dt>Status:</dt><dd><span class="dot dot-rec"></span> recording</dd></div>
               </dl>
             </div>
           </div>
-          <p class="bio">CEO of moving in silence. From concepts to creations, she's the girl behind the magic. A little bit of everything and knows a thing or two about making a viral video. If it starts as a random thought, she'll probably turn it into a campaign.</p>
+          <p class="bio">The everything girl. CEO of moving in silence. From concepts to creations, she&rsquo;s the girl behind the magic. A little bit of everything and knows a thing or two about making a viral video. If it starts as a random thought, she&rsquo;ll probably turn it into a campaign.</p>
+          <span class="sticker st-rec" aria-hidden="true">&#9679; REC</span>
         </article>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <h2 class="section-title reveal">Give us a buzz</h2>
-      <p class="section-sub reveal">tell us about your brand, your big idea, or your random 2am thought</p>
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title reveal">Give us a buzz.</h2>
+      <p class="section-sub reveal">Have an idea, a brand, or a chaotic thought that needs a campaign? Give us a buzz.</p>
 
       <div class="contact-grid">
         <div class="bee-stage" aria-hidden="true">
@@ -216,27 +256,26 @@
           </div>
         </div>
 
-        <form class="card-form reveal" id="contact-form" novalidate>
-          <label>Your name<input name="name" required autocomplete="name"></label>
-          <label>Email<input name="email" type="email" required autocomplete="email"></label>
-          <label>Brand / business<input name="brand" autocomplete="organization"></label>
-          <label>What can we help with?
-            <select name="service">
-              <option>Social media</option><option>Content</option><option>Strategy</option><option>Consulting</option><option>All of the above ✧</option>
-            </select>
-          </label>
-          <label>Tell us everything<textarea name="message" rows="4" required></textarea></label>
-          <button type="submit" class="btn">Send the buzz 🐝</button>
-          <p class="form-status" role="status"></p>
+        <form class="card-form reveal" id="contact-form" novalidate aria-label="Contact us">
+          <div class="row">
+            <label>Name<input name="name" required autocomplete="name" aria-describedby="err-c-name"><span class="field-err" id="err-c-name"></span></label>
+            <label>Email<input name="email" type="email" required autocomplete="email" aria-describedby="err-c-email"><span class="field-err" id="err-c-email"></span></label>
+          </div>
+          <label><span>Brand or social link <span class="opt">(optional)</span></span><input name="brand" placeholder="@yourbrand or a link" autocomplete="url"></label>
+          <label>Message<textarea name="message" rows="4" required placeholder="no idea is too random" aria-describedby="err-c-message"></textarea><span class="field-err" id="err-c-message"></span></label>
+          <button type="submit" class="btn">Give us a buzz</button>
+          <p class="form-note" data-when="no-endpoint">This opens your email app with your message ready to send.</p>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
     <!-- WE'RE GROWING -->
-    <section id="growing" class="growing">
-      <h2 class="section-title reveal">We're growing</h2>
-      <p class="section-sub reveal">think you'd bloom here? send us your resume & a little about you</p>
+    <section id="growing" class="growing" aria-labelledby="growing-title">
+      <h2 id="growing-title" class="section-title reveal">We&rsquo;re growing.</h2>
+      <p class="section-sub reveal">Want to join the Daisy Digital team? Send us your resume and tell us what you&rsquo;re into.</p>
 
+      <button type="button" class="water-btn" aria-pressed="false">Water the daisies</button>
       <div class="garden" aria-hidden="true">
         <svg class="can" viewBox="0 0 160 110">
           <path d="M30 40 L100 40 L95 100 L35 100 Z" fill="#a78bfa" stroke="#6d28d9" stroke-width="3"/>
@@ -256,28 +295,41 @@
         <div class="soil"></div>
       </div>
 
-      <form class="card-form reveal" id="join-form" novalidate>
+      <form class="card-form reveal" id="join-form" novalidate aria-label="Join the team">
         <div class="row">
-          <label>Name<input name="name" required autocomplete="name"></label>
-          <label>Email<input name="email" type="email" required autocomplete="email"></label>
+          <label>Name<input name="name" required autocomplete="name" aria-describedby="err-j-name"><span class="field-err" id="err-j-name"></span></label>
+          <label>Email<input name="email" type="email" required autocomplete="email" aria-describedby="err-j-email"><span class="field-err" id="err-j-email"></span></label>
         </div>
-        <label>Your socials / portfolio<input name="portfolio" placeholder="@yourhandle or a link"></label>
-        <label>Tell us about you<textarea name="about" rows="3" placeholder="what's in your 473 tabs right now?"></textarea></label>
+        <div class="row">
+          <label>Role or interest<input name="role" required placeholder="content, social, strategy…" aria-describedby="err-j-role"><span class="field-err" id="err-j-role"></span></label>
+          <label><span>Portfolio or social link <span class="opt">(optional)</span></span><input name="portfolio" placeholder="@yourhandle or a link"></label>
+        </div>
         <label class="file-drop">
-          <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
-          <span class="file-label">📎 Drop your resume here or <u>browse</u><br><small>PDF or Word, max 10MB</small></span>
+          <input type="file" name="resume" accept=".pdf,.doc,.docx" aria-describedby="err-j-resume">
+          <span class="file-label">Drop your resume here or <u>browse</u><br><small>PDF or Word, max 10MB</small></span>
         </label>
-        <button type="submit" class="btn">Plant my application 🌱</button>
-        <p class="form-status" role="status"></p>
+        <span class="field-err" id="err-j-resume"></span>
+        <label><span>A little about you <span class="opt">(optional)</span></span><textarea name="about" rows="3" placeholder="what&rsquo;s in your 473 tabs right now?"></textarea></label>
+        <button type="submit" class="btn">Join the team</button>
+        <!-- TODO: resume uploads need FORM_ENDPOINT (script.js) set to a form service that accepts files -->
+        <p class="form-note" data-when="no-endpoint">Resume uploads aren&rsquo;t connected yet, so we&rsquo;ll ask you to email it to us.</p>
+        <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>
 
   <footer class="footer">
-    <img src="assets/daisy.svg" alt="" width="40" height="40">
-    <p class="footer-motto">Stay cute. Stay current. Stay on everyone's feed.</p>
-    <p>Love, Daisy Digital xo</p>
-    <p class="tiny">© <span id="year"></span> Daisy Digital · creative by nature</p>
+    <a href="#top" class="footer-logo"><img src="assets/daisy.svg" alt="" width="36" height="36"><span>Daisy Digital</span></a>
+    <p class="footer-tag">Creative by nature.</p>
+    <!-- TODO: real social links -->
+    <ul class="socials" aria-label="Social links (coming soon)">
+      <li><span class="social" title="link coming soon">Instagram</span></li>
+      <li><span class="social" title="link coming soon">TikTok</span></li>
+      <li><span class="social" title="link coming soon">LinkedIn</span></li>
+    </ul>
+    <p><a class="footer-email" href="mailto:hello@daisydigital.com">hello@daisydigital.com</a></p>
+    <p class="footer-love">Love, Daisy Digital xo</p>
+    <p class="tiny">&copy; <span id="year"></span> Daisy Digital</p>
   </footer>
 
   <script src="script.js"></script>
