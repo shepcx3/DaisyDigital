@@ -1,0 +1,18 @@
+.section { padding-block: clamp(56px, 8vw, 96px); position: relative; }
+.head { display: grid; justify-items: center; text-align: center; gap: 10px; max-width: 680px; margin: 0 auto clamp(30px, 5vw, 48px); }
+.left { justify-items: start; text-align: left; margin-left: 0; }
+.h1 { font-size: clamp(2.8rem, 9vw, 5.2rem); margin: 0; text-transform: lowercase; }
+.h2 { font-size: clamp(2.2rem, 6vw, 3.8rem); margin: 0; text-transform: lowercase; }
+.intro { margin: 0; color: var(--ink-soft); font-size: 1.08rem; max-width: 56ch; }
+:global(.surface-violet) .intro { color: var(--lilac); }
+
+/* edge daisies: closed buds until the section scrolls into view */
+.bloom {
+  position: absolute; top: 64px; width: 34px; height: 34px; pointer-events: none; z-index: 1;
+  scale: 0.25; opacity: 0.5; rotate: -90deg;
+  transition: scale var(--dur-slow) var(--ease-bounce), opacity var(--dur-base) ease, rotate var(--dur-slow) var(--ease-bounce);
+}
+.bloomL { left: max(10px, calc((100vw - var(--max)) / 2 - 64px)); }
+.bloomR { right: max(10px, calc((100vw - var(--max)) / 2 - 64px)); top: 140px; transition-delay: 120ms; }
+.open { scale: 1; opacity: 1; rotate: 0deg; }
+@media (max-width: 1240px) { .bloom { display: none; } }

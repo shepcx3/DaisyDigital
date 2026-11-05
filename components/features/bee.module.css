@@ -1,0 +1,37 @@
+.stage { position: relative; width: 300px; max-width: 100%; height: 220px; display: grid; place-items: end center; padding-bottom: 30px; }
+.trail { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.trail path { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: 3 9; stroke-linecap: round; opacity: 0.35; }
+.flyer {
+  position: absolute; left: 0; top: 0; width: 54px; pointer-events: none;
+  offset-path: path("M8 30 C 90 -10, 290 20, 260 100 S 110 210, 90 140 S 190 90, 150 170");
+  offset-rotate: 0deg; translate: -27px -30px;
+  animation: fly 600ms var(--ease-out) forwards;
+}
+@keyframes fly { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+
+.btn {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-fredoka); font-weight: 600; font-size: 1.1rem; line-height: 1; text-transform: lowercase;
+  padding: 14px 24px; border-radius: 999px;
+  background: var(--hot); color: var(--ink);
+  border: var(--border); box-shadow: 3px 4px 0 var(--ink);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn::before {
+  content: ""; position: absolute; inset: -18px -24px; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, var(--hot), transparent); filter: blur(16px); opacity: 0.4;
+}
+.btn:hover { transform: translate(-1px, -2px); box-shadow: 4px 6px 0 var(--ink); }
+.btn:active { transform: translate(2px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+.rider { position: absolute; width: 44px; left: -20px; top: -30px; rotate: -12deg; }
+
+/* while the bee flies, the button waits as a closed bud; it pops open when the bee lands */
+.flying .btn { scale: 0.2; opacity: 0; }
+.landed .btn { animation: morph 280ms var(--ease-bounce); }
+@keyframes morph { from { scale: 0.3; opacity: 0; border-radius: 50%; } }
+.flying .rider { visibility: hidden; }
+
+.wing { transform-box: fill-box; transform-origin: bottom center; animation: flap 0.1s linear infinite alternate; }
+@keyframes flap { from { rotate: -18deg; } to { rotate: 18deg; } }
+.rider .wing { animation-duration: 0.16s; }

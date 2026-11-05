@@ -1,0 +1,33 @@
+.page { padding-block: 48px 96px; }
+.head { margin-bottom: 40px; }
+.head h1 { font-size: clamp(2.6rem, 8vw, 4.5rem); margin: 12px 0 8px; }
+.head p { max-width: 60ch; color: var(--ink-soft); margin: 0; }
+
+.section { margin-top: 56px; }
+.section > h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
+.section > p { margin: 0 0 20px; color: var(--ink-soft); max-width: 62ch; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--min, 150px), 1fr)); gap: 16px; }
+
+.swatch { background: var(--offwhite); border: var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow); }
+.chip { height: 88px; border-bottom: var(--border); }
+.swatch p { margin: 0; padding: 10px 12px; font-size: 0.85rem; line-height: 1.35; }
+.swatch code { font-family: var(--font-silkscreen); font-size: 10px; }
+
+.tile {
+  background: var(--offwhite); border: var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow);
+  padding: 18px; min-height: 120px; display: grid; place-items: center; gap: 8px; text-align: center;
+}
+.tile small { font-family: var(--font-silkscreen); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
+
+.typeRow { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 2px dashed var(--lilac); }
+.typeRow small { font-family: var(--font-silkscreen); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
+
+.accent { border: var(--border); border-radius: var(--radius-md); padding: 18px; background: var(--offwhite); box-shadow: var(--shadow); }
+.accentBar { height: 14px; border-radius: 999px; background: var(--hot); border: 2px solid var(--ink); margin-top: 10px; }
+
+.demoGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; align-items: stretch; }
+
+.code { font-family: var(--font-silkscreen); font-size: 10px; background: var(--offwhite); border: 2px dashed var(--lilac); border-radius: var(--radius-sm); padding: 12px; white-space: pre-wrap; overflow-x: auto; }
+
+@media (max-width: 640px) { .typeRow { grid-template-columns: 1fr; gap: 4px; } }

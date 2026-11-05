@@ -1,0 +1,18 @@
+.services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+@media (min-width: 1000px) { .services { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
+.serviceSticker { display: block; height: 100%; }
+.service { height: 100%; background: var(--offwhite); border: var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow); padding: 22px; }
+.service h3 { font-size: 1.5rem; margin: 12px 0 6px; text-transform: lowercase; }
+.service p { margin: 0; color: var(--ink-soft); }
+.serviceIcon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 2px; background: var(--hot); border: 2px solid var(--ink); }
+
+.more { text-align: center; margin: 36px 0 0; }
+.teamWrap { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 30px; align-items: start; }
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+@media (max-width: 1040px) { .teamWrap { grid-template-columns: 1fr; } .teamWrap > :first-child { max-width: 420px; width: 100%; margin-inline: auto; } }
+@media (max-width: 680px) { .team { grid-template-columns: 1fr; } }
+
+.cta { text-align: center; }
+.ctaTitle { font-size: clamp(2rem, 6vw, 3.4rem); margin: 0 auto 10px; max-width: 18ch; text-transform: lowercase; }
+.ctaBody { margin: 0 0 26px; color: var(--ink-soft); }

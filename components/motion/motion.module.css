@@ -1,0 +1,11 @@
+/* ---------- toast ---------- */
+.toastRegion { position: fixed; z-index: 60; left: 50%; bottom: 24px; translate: -50% 0; pointer-events: none; }
+.toast {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--ink); color: var(--offwhite);
+  padding: 10px 16px; border-radius: 999px; box-shadow: var(--shadow);
+  font-family: var(--font-silkscreen); font-size: 11px; letter-spacing: 0.06em; text-transform: lowercase; white-space: nowrap;
+  animation: toast-in 360ms var(--ease-bounce);
+}
+@keyframes toast-in { from { opacity: 0; transform: translateY(16px) scale(0.9); } }
+@media (max-width: 760px) { .toastRegion { bottom: 96px; } }

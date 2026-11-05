@@ -1,0 +1,35 @@
+.buzz { position: relative; display: inline-flex; align-items: center; gap: 12px; }
+.landing { position: relative; flex: none; width: 56px; height: 56px; margin-left: 4px; }
+
+/* a closed bud until the bee arrives */
+.flower {
+  width: 100%; height: 100%;
+  scale: 0.62; rotate: -40deg;
+  transition: scale var(--dur-slow) var(--ease-bounce), rotate var(--dur-slow) var(--ease-out);
+}
+
+/* the bee rests at the end of its flight path: on top of the daisy */
+.bee {
+  position: absolute; left: 0; top: 0; width: 30px; z-index: 2; pointer-events: none;
+  offset-path: path("M-172 30 C -132 -38, -62 -42, -80 4 C -94 42, 0 36, 46 8");
+  offset-distance: 100%; offset-rotate: 0deg; offset-anchor: 50% 70%;
+}
+
+@media (hover: hover) {
+  .buzz:is(:hover, :focus-within) .bee { animation: buzz-in 900ms var(--ease-out) both; }
+  .buzz:is(:hover, :focus-within) .flower { scale: 1; rotate: 0deg; transition-delay: 640ms; }
+}
+/* keyboard focus on touch-less setups too */
+.buzz:focus-within .flower { scale: 1; rotate: 0deg; }
+
+@keyframes buzz-in {
+  from { offset-distance: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  to { offset-distance: 100%; }
+}
+
+/* touch: nothing to hover, so the daisy is already open with the bee on it */
+@media (hover: none) { .flower { scale: 1; rotate: 0deg; } }
+
+:global(html[data-calm="on"]) .bee { animation: none; }
+:global(html[data-calm="on"]) .flower { scale: 1; rotate: 0deg; transition: none; }

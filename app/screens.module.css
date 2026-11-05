@@ -1,0 +1,42 @@
+/* shared by 404, thanks, password and loading */
+.screen { min-height: 70vh; display: grid; place-items: center; padding: 48px var(--gutter); }
+.card { width: min(560px, 100%); text-align: center; }
+.inner { display: grid; justify-items: center; gap: 14px; padding-block: 16px; }
+.big { font-family: var(--font-silkscreen); font-size: clamp(3.6rem, 16vw, 6.5rem); line-height: 1; letter-spacing: 0.08em; }
+.title { font-size: clamp(2.2rem, 7vw, 3.4rem); margin: 0; text-transform: lowercase; }
+.body { margin: 0; color: var(--ink-soft); max-width: 42ch; }
+
+/* wilted daisy that re-blooms on hover/focus */
+.wilt { width: 120px; height: 140px; display: block; }
+.wilt .head { transform-origin: 60px 70px; rotate: 62deg; translate: 8px 6px; transition: rotate var(--dur-slow) var(--ease-bounce), translate var(--dur-slow) var(--ease-bounce); }
+.wilt .stem { transition: d var(--dur-slow) var(--ease-bounce); }
+.wiltWrap:hover .head, .wiltWrap:focus-visible .head { rotate: 0deg; translate: 0 0; }
+.wiltWrap { background: none; border: 0; padding: 0; }
+
+/* lock screen */
+.lock { min-height: 80vh; display: grid; place-items: center; padding: 40px var(--gutter); background: var(--violet-deep); color: var(--offwhite); }
+.lockInner { width: min(380px, 100%); display: grid; justify-items: center; gap: 18px; text-align: center; }
+.clock { font-family: var(--font-fredoka); font-weight: 600; font-size: clamp(4rem, 18vw, 6rem); line-height: 1; letter-spacing: -0.03em; }
+.date { font-family: var(--font-silkscreen); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lilac); }
+.notif {
+  width: 100%; text-align: left; color: var(--ink);
+  background: color-mix(in srgb, var(--offwhite) 92%, transparent); border: var(--border); border-radius: 4px; padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.notifHead { display: flex; align-items: center; gap: 8px; font-family: var(--font-silkscreen); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+.notifHead span:last-child { margin-left: auto; color: var(--ink-soft); }
+.notif p { margin: 0 0 12px; }
+.pw { display: flex; gap: 8px; }
+.pw input { flex: 1; min-width: 0; font: inherit; padding: 10px 14px; border: var(--border); border-radius: 999px; }
+.pw button { font: inherit; font-weight: 700; padding: 10px 16px; border: var(--border); border-radius: 999px; background: var(--bubblegum); color: var(--ink); }
+.pwMsg { min-height: 1.4em; margin: 8px 0 0; font-size: 0.9rem; font-weight: 500; }
+
+/* loader: only appears if loading takes longer than 300ms */
+.loader { min-height: 60vh; display: grid; place-items: center; gap: 14px; align-content: center; opacity: 0; animation: appear 200ms 300ms forwards; }
+.loaderDaisy { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; width: 84px; animation: spin 1.6s linear infinite; }
+.loaderDaisy i { aspect-ratio: 1; border-radius: 1px; opacity: 0; animation: pixel 300ms forwards; animation-delay: calc(var(--d) * 70ms + 300ms); }
+.p { background: var(--offwhite); outline: 1.5px solid var(--ink); }
+.d { background: #ffd75e; outline: 1.5px solid var(--ink); }
+@keyframes appear { to { opacity: 1; } }
+@keyframes pixel { from { opacity: 0; scale: 0; } to { opacity: 1; scale: 1; } }
+@keyframes spin { to { rotate: 360deg; } }

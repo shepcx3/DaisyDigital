@@ -1,0 +1,53 @@
+.garden { position: relative; width: min(720px, 100%); height: 290px; margin: 0 auto 28px; }
+
+/* the can tilts on an inner element and the hover sits on the stable garden box,
+   so the moving can never slips out from under the mouse (that was the flicker) */
+.can { position: absolute; left: 0; top: 6px; width: 160px; transform-origin: 30% 85%; transition: rotate 700ms var(--ease-out); }
+.can svg { display: block; width: 100%; overflow: visible; }
+.bloomed .can { animation: pour 2600ms var(--ease-out) both; }
+.garden:hover .can { rotate: 22deg; }
+@keyframes pour { 0% { rotate: 0deg; } 18%, 72% { rotate: 24deg; } 100% { rotate: 0deg; } }
+
+.drops { position: absolute; left: 158px; top: 76px; width: 96px; height: 120px; pointer-events: none; }
+.drops i { position: absolute; top: 0; width: 7px; height: 11px; background: var(--baby-blue); border: 1.5px solid var(--ink); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; opacity: 0; }
+.drops i:nth-child(1) { left: 0; animation-delay: 0ms; }
+.drops i:nth-child(2) { left: 22px; animation-delay: 220ms; }
+.drops i:nth-child(3) { left: 44px; animation-delay: 110ms; }
+.drops i:nth-child(4) { left: 66px; animation-delay: 330ms; }
+.drops i:nth-child(5) { left: 88px; animation-delay: 170ms; }
+.bloomed .drops i { animation: drip 640ms linear 3; }
+.garden:hover .drops i { animation: drip 640ms linear infinite; }
+@keyframes drip { 0% { opacity: 0; translate: 0 0; } 20% { opacity: 1; } 100% { opacity: 0; translate: 0 112px; } }
+
+.flowers { position: absolute; left: 24%; right: 2%; bottom: 22px; display: flex; justify-content: space-around; align-items: flex-end; }
+.flower { position: relative; width: 6px; height: var(--h); }
+.stem {
+  position: absolute; inset: 0; background: #22a35a; border: 1.5px solid var(--ink); border-radius: 3px;
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 900ms var(--ease-out) var(--delay);
+}
+.leafL, .leafR { position: absolute; width: 18px; height: 9px; background: #4ade80; border: 1.5px solid var(--ink); }
+.leafL { right: 100%; top: 58%; border-radius: 100% 0 100% 0; }
+.leafR { left: 100%; top: 40%; border-radius: 0 100% 0 100%; }
+.head {
+  position: absolute; left: 50%; top: 0; width: 62px; height: 62px; max-width: none;
+  translate: -50% -50%; scale: 0;
+  transition: scale 620ms var(--ease-bounce) calc(var(--delay) + 620ms);
+}
+.bloomed .stem { transform: scaleY(1); }
+.bloomed .head { scale: 1; }
+.garden:hover .head { rotate: 12deg; }
+.head { transition-property: scale, rotate; }
+
+.soil { position: absolute; left: 18%; right: 0; bottom: 0; height: 26px; background: #6b3f26; border: var(--border); border-radius: 50% 50% var(--radius-sm) var(--radius-sm) / 100% 100% var(--radius-sm) var(--radius-sm); }
+
+@media (max-width: 560px) {
+  .garden { height: 270px; }
+  .can { width: 112px; }
+  .drops { left: 104px; top: 54px; width: 74px; }
+  .drops i:nth-child(n + 4) { display: none; }
+  .flowers { left: 10%; }
+  .soil { left: 4%; }
+  .head { width: 50px; height: 50px; }
+  .flower:nth-child(6) { display: none; }
+}

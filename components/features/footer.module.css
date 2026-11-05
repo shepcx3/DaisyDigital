@@ -1,0 +1,30 @@
+.footer { position: relative; padding: 72px var(--gutter) 40px; margin-top: 80px; }
+.egg { left: 8%; bottom: 36px; }
+.phone {
+  max-width: 440px; margin: 0 auto; color: var(--ink);
+  background: var(--offwhite); border: var(--border); border-radius: 4px; box-shadow: 5px 7px 0 rgba(20, 8, 46, 0.28);
+  overflow: hidden;
+}
+.head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 2px solid var(--lavender); }
+.head b { font-family: var(--font-fredoka); font-size: 1.1rem; display: block; line-height: 1.1; }
+.head small { font-family: var(--font-silkscreen); font-size: 12px; letter-spacing: 0.04em; color: #13693a; }
+.avatar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--violet); color: var(--offwhite); border: 2px solid var(--ink); }
+.chat { display: flex; flex-direction: column; gap: 8px; padding: 18px; }
+.them, .me { margin: 0; max-width: 85%; padding: 9px 14px; border: 2px solid var(--ink); border-radius: 4px; line-height: 1.4; }
+.them { background: var(--lavender); border-bottom-left-radius: 5px; }
+.me { align-self: flex-end; background: var(--bubblegum); border-bottom-right-radius: 5px; }
+.them a { font-weight: 700; color: var(--ink); text-decoration-color: var(--violet); text-underline-offset: 3px; }
+.read { align-self: flex-end; font-family: var(--font-silkscreen); font-size: 12px; letter-spacing: 0.04em; color: var(--ink-soft); }
+.newMsg { margin-top: 8px; padding: 12px; border: 2px dashed var(--ink); border-radius: 4px; background: #fff; display: grid; gap: 8px; justify-items: start; }
+.newText { margin: 0; font-size: 0.95rem; }
+.sub { display: grid; gap: 8px; width: 100%; }
+.subRow { display: flex; gap: 8px; }
+.subRow input { flex: 1; min-width: 0; font: inherit; padding: 9px 12px; border: 2px solid var(--ink); border-radius: 999px; }
+.subRow button { font: inherit; font-weight: 700; padding: 9px 14px; border: 2px solid var(--ink); border-radius: 999px; background: var(--bubblegum); color: var(--ink); }
+.typing { display: inline-flex; gap: 4px; align-self: flex-start; padding: 12px 14px; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); animation: dots 1.2s infinite; }
+.typing i:nth-child(2) { animation-delay: 0.15s; }
+.typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes dots { 0%, 60%, 100% { opacity: 0.35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+.legal { text-align: center; margin: 26px 0 0; font-size: 0.85rem; color: var(--lilac); }
+.legal a { color: var(--offwhite); }

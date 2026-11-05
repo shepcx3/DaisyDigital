@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* expose tokens to Tailwind utilities: bg-lavender, text-ink, font-display, rounded-md … */
+@theme inline {
+  --color-lavender: var(--lavender);
+  --color-lilac: var(--lilac);
+  --color-violet: var(--violet);
+  --color-violet-deep: var(--violet-deep);
+  --color-bubblegum: var(--bubblegum);
+  --color-baby-blue: var(--baby-blue);
+  --color-offwhite: var(--offwhite);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-hot: var(--hot);
+
+  --font-display: var(--font-fredoka);
+  --font-sans: var(--font-dm-sans);
+  --font-pixel: var(--font-silkscreen);
+  --font-serif: var(--font-instrument-serif);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+}
+
+/* ---------- base ---------- */
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--lavender);
+  color: var(--ink);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+h1, h2, h3 { font-family: var(--font-fredoka), system-ui, sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; }
+img, svg { max-width: 100%; }
+
+/* chunky dashed violet focus ring, everywhere */
+:focus-visible { outline: 3px dashed var(--violet); outline-offset: 3px; border-radius: 6px; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 100;
+  translate: 0 -200%; background: var(--offwhite); border: var(--border); border-radius: 999px; padding: 8px 16px;
+}
+.skip-link:focus { translate: 0 0; }
+
+.page-shell { min-height: 70vh; }
+@media (max-width: 760px) { body { padding-bottom: 92px; } } /* room for the bottom tab bar */
+
+.container-dd { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- texture: grain only on purple surfaces ---------- */
+.grain { position: relative; isolation: isolate; }
+.grain::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.07; mix-blend-mode: overlay;
+}
+.surface-violet { background: var(--violet-deep); color: var(--offwhite); }
+
+/* ---------- browser surfaces ---------- */
+::placeholder { color: #6e5f8f; opacity: 1; } /* 5.9:1 on white */
+::selection { background: var(--bubblegum); color: var(--ink); }
+
+/* ---------- type utilities ---------- */
+.micro-label {
+  font-family: var(--font-silkscreen), ui-monospace, monospace;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 9px; border-radius: 999px;
+  background: var(--offwhite); color: var(--ink); border: 2px solid var(--ink);
+}
+.text-outline { color: transparent; -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; }
+.surface-violet .text-outline { -webkit-text-stroke-color: var(--offwhite); }
+.text-sticker {
+  display: inline-block; rotate: -3deg;
+  color: var(--ink); background: var(--hot);
+  padding: 0 0.2em; border-radius: 0.2em;
+  box-shadow: 0 0 0 3px #fff, var(--shadow);
+}
+.text-serif { font-family: var(--font-instrument-serif), Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: 0; }
+
+/* ---------- cursors: desktop mouse only, never in calm mode ---------- */
+@media (pointer: fine) {
+  html:not([data-calm="on"]) body {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><g transform='translate(14 14)' fill='%23fffbf5' stroke='%232a1a4a' stroke-width='1.6'><ellipse cy='-7.5' rx='3.2' ry='5.2'/><ellipse cy='-7.5' rx='3.2' ry='5.2' transform='rotate(60)'/><ellipse cy='-7.5' rx='3.2' ry='5.2' transform='rotate(120)'/><ellipse cy='-7.5' rx='3.2' ry='5.2' transform='rotate(180)'/><ellipse cy='-7.5' rx='3.2' ry='5.2' transform='rotate(240)'/><ellipse cy='-7.5' rx='3.2' ry='5.2' transform='rotate(300)'/></g><circle cx='14' cy='14' r='3.8' fill='%23ffd75e' stroke='%232a1a4a' stroke-width='1.6'/></svg>") 14 14, auto;
+  }
+  html:not([data-calm="on"]) :is(a, button, summary, label, select, [role="button"]) {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'><g stroke='%23ff8fc7' stroke-width='2' stroke-linecap='round'><path d='M18 1.5v3M18 31.5v3M1.5 18h3M31.5 18h3M6 6l2 2M28 28l2 2M6 30l2-2M28 8l2-2'/></g><g transform='translate(18 18)' fill='%23ffd9ec' stroke='%232a1a4a' stroke-width='1.6'><ellipse cy='-7.5' rx='3.3' ry='5.6'/><ellipse cy='-7.5' rx='3.3' ry='5.6' transform='rotate(45)'/><ellipse cy='-7.5' rx='3.3' ry='5.6' transform='rotate(90)'/><ellipse cy='-7.5' rx='3.3' ry='5.6' transform='rotate(135)'/><ellipse cy='-7.5' rx='3.3' ry='5.6' transform='rotate(180)'/><ellipse cy='-7.5' rx='3.3' ry='5.6' transform='rotate(225)'/><ellipse cy='-7.5' rx='3.3' ry='5.6' transform='rotate(270)'/><ellipse cy='-7.5' rx='3.3' ry='5.6' transform='rotate(315)'/></g><circle cx='18' cy='18' r='4' fill='%23ffd75e' stroke='%232a1a4a' stroke-width='1.6'/></svg>") 18 18, pointer;
+  }
+  html:not([data-calm="on"]) :is(input:not([type="checkbox"], [type="radio"], [type="file"]), textarea) {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='22' viewBox='0 0 12 22' shape-rendering='crispEdges'><path fill='%23fffbf5' d='M0 0h12v4H8v14h4v4H0v-4h4V4H0z'/><path fill='%237b4fd6' d='M1 1h10v2H7v16h4v2H1v-2h4V3H1z'/></svg>") 6 11, text;
+  }
+}
+
+/* ---------- calm mode: everything decorative stops ---------- */
+html[data-calm="on"] *, html[data-calm="on"] *::before, html[data-calm="on"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+/* calm mode keeps page transitions, but only as a quick fade */
+html[data-calm="on"] ::view-transition-group(*) { animation-duration: 150ms !important; }
+html[data-calm="on"] ::view-transition-old(*) { animation: 150ms ease both vt-fade-out !important; }
+html[data-calm="on"] ::view-transition-new(*) { animation: 150ms ease both vt-fade-in !important; }
+@keyframes vt-fade-in { from { opacity: 0; } }
+
+/* ---------- sparkle mode (easter egg): chrome shimmer on headings ---------- */
+html.sparkle-mode :is(h1, h2) {
+  background: linear-gradient(110deg, #9a9eab 0%, #ffffff 20%, #b9bcc6 35%, #ff8fc7 50%, #a9d8ff 65%, #ffffff 80%, #9a9eab 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+  animation: chrome-shimmer 2.4s linear infinite;
+}
+@keyframes chrome-shimmer { to { background-position: -250% 0; } }
+
+/* ---------- page transitions ---------- */
+/* default: "new tab opening" (window scales up from the top) */
+::view-transition-old(.tab-open) { animation: var(--dur-fast) ease-out both vt-fade-out; }
+::view-transition-new(.tab-open) { animation: 360ms var(--ease-bounce) both vt-tab-open; transform-origin: 50% 0; }
+/* work detail: camera-flash white blink */
+::view-transition-old(.cam-flash) { animation: 120ms ease-out both vt-fade-out; }
+::view-transition-new(.cam-flash) { animation: 420ms ease-out both vt-flash; }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-tab-open { from { opacity: 0; transform: scale(0.94) translateY(-12px); } }
+@keyframes vt-flash { 0% { opacity: 0; filter: brightness(3); } 30% { opacity: 1; filter: brightness(2.2); } 100% { filter: none; } }

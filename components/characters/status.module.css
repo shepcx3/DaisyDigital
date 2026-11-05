@@ -1,0 +1,21 @@
+.window { color: var(--ink); }
+.body { padding: 10px 8px 12px; display: grid; gap: 10px; }
+.group {
+  margin: 0 0 4px; padding: 3px 8px;
+  font-family: var(--font-silkscreen); font-weight: 400; font-size: 12px; letter-spacing: 0.04em; text-transform: lowercase;
+  background: var(--lavender); border-radius: var(--radius-sm);
+}
+.list { list-style: none; margin: 0; padding: 0; }
+.row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 8px; border-radius: var(--radius-sm);
+  color: var(--ink); text-decoration: none;
+  transition: background var(--dur-fast);
+}
+.row:hover { background: color-mix(in srgb, var(--lilac) 45%, transparent); }
+.daisy { width: 26px; height: 26px; flex: none; transition: rotate var(--dur-slow) var(--ease-out); }
+.row:hover .daisy { rotate: 60deg; }
+.text { display: grid; min-width: 0; line-height: 1.25; }
+.line b { font-weight: 700; }
+.state { color: var(--ink-soft); font-size: 0.85rem; }
+.note { font-family: var(--font-instrument-serif); font-style: italic; font-size: 1rem; color: var(--ink-soft); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
