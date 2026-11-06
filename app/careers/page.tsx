@@ -13,7 +13,7 @@ export default function CareersPage() {
   return (
     <main id="main">
       <Section accent="violet" labelledBy="careers-h">
-        <SectionHead as="h1" id="careers-h" label={careers.label} secret="yes, you can bring your 473 tabs" title={careers.title} intro={careers.intro} />
+        <SectionHead as="h1" id="careers-h" label={careers.label} secret="yes, you can bring your 400 tabs" title={careers.title} intro={careers.intro} />
         <Garden />
         <BrowserWindow as="section" tab="join_the_team.exe" icon="watering-can" className={s.window} aria-label="application form">
           <JoinForm />

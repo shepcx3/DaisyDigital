@@ -7,7 +7,6 @@ import { WorkCard } from "@/components/features/WorkCard";
 import h from "@/components/features/hero.module.css";
 import w from "@/components/features/work.module.css";
 import { Icon, type IconName } from "@/components/icons/Icon";
-import { BrowserWindow } from "@/components/system/BrowserWindow";
 import { Section, SectionHead } from "@/components/system/layout";
 import { Annotation, Button, Divider, Marquee, MicroLabel, Polaroid, Sticker, StickyNote } from "@/components/system/primitives";
 import { brand, home, team, work } from "@/content/site";
@@ -21,10 +20,17 @@ export default function Home() {
       {/* HERO: desktop collage → stacked on mobile */}
       <Section accent="pink" blooms className={h.hero}>
         <div className={h.collage}>
-          <BrowserWindow as="article" tab="about_us.txt" icon="daisy" url="daisydigital.com" className={h.main}>
-            <MicroLabel secret="psst… we already have ideas">{home.label}</MicroLabel>
-            <h1 className={h.wordmark}><span>daisy</span>{" "}<br />digital</h1>
+          <div className={h.title}>
+            <h1 className={h.wordmark} aria-label={brand.name}>
+              <span className={h.chrome} data-text="daisy" aria-hidden="true">daisy</span>{" "}
+              <span className={h.chrome} data-text="digital" aria-hidden="true">digital</span>
+            </h1>
+            <HeroDaisy />
+          </div>
+
+          <div className={h.intro}>
             <p className={`text-serif ${h.tagline}`}>{brand.tagline}</p>
+            <MicroLabel secret="psst… we already have ideas">{home.label}</MicroLabel>
             <div className={h.copy}>
               <p className={h.lead}>{home.intro}</p>
               <p>{home.body}</p>
@@ -33,9 +39,7 @@ export default function Home() {
               <BuzzCta label={home.cta} />
               <Annotation>love, daisy digital xo</Annotation>
             </div>
-          </BrowserWindow>
-
-          <HeroDaisy />
+          </div>
 
           <div className={h.polaroids}>
             {home.polaroids.slice(0, 2).map((p, i) => (

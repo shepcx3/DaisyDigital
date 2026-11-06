@@ -68,7 +68,7 @@ export function JoinForm() {
       </label>
       <label className={s.field}>
         Tell us about you
-        <textarea name="about" rows={3} placeholder="what's in your 473 tabs right now?" />
+        <textarea name="about" rows={3} placeholder="what's in your 400 tabs right now?" />
       </label>
       <div className={s.field}>
         <span id="resume-label">Resume <span className={s.hint}>(PDF or Word, max {MAX_MB}MB)</span></span>

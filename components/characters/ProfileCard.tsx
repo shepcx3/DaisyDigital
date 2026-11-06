@@ -3,7 +3,6 @@ import { BrowserWindow } from "@/components/system/BrowserWindow";
 import { Badge } from "@/components/system/primitives";
 import type { Member } from "@/content/site";
 import { Cutie } from "./Cutie";
-import { presenceColors } from "./StatusList";
 import s from "./profile.module.css";
 
 /** MySpace-esque profile page inside a BrowserWindow. The member's signature colour is the card's hot accent. */
@@ -31,12 +30,9 @@ export function ProfileCard({ m, compact, headingLevel = 3 }: { m: Member; compa
           <table className={s.table}>
             <tbody>
               <tr><th scope="row">mood</th><td>{m.mood}</td></tr>
-              <tr><th scope="row">status</th><td><span className={s.dot} style={{ background: presenceColors[m.presence] }} aria-hidden="true" />{m.status}</td></tr>
+              <tr><th scope="row">status</th><td>{m.status}</td></tr>
               <tr><th scope="row">currently listening to</th><td>{m.listening}</td></tr>
-              <tr>
-                <th scope="row">top 3 trends</th>
-                <td><ol className={s.trends}>{m.trends.map((t) => <li key={t}>{t}</li>)}</ol></td>
-              </tr>
+              <tr><th scope="row">fav trend</th><td>{m.trend}</td></tr>
             </tbody>
           </table>
         )}

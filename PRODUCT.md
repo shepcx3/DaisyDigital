@@ -22,7 +22,7 @@ From the CEO's brief: Daisy Digital is "chronically online, creatively curious a
 
 ## Operating Context
 
-- The team: Erica ("the girl with 473 tabs open"), Bri ("the everything girl"), Philie (photographer) and Jany (model / middleman). Philie and Jany's details are placeholders until the client supplies them. The client wants to add members themselves as they grow.
+- The team: Erica ("the girl with 400 tabs open"), Bri ("the everything girl"), Philie (photography princess) and Jany (model of the year). Their profile lines come from the owner's handwritten notes. The client wants to add members themselves as they grow.
 - Visitors reach the agency by the contact form, the careers application with resume upload, or the footer newsletter signup.
 - Visitors come from social feeds and phones as much as desktops.
 
@@ -59,8 +59,9 @@ Voice: lowercase, playful, internet-native. Form labels and legal text stay clea
 - Brands the CEO says they've worked with: **bloom, glossier, lay low, strong, holistically hip, dreamers club**, "and more". The names come from the CEO; what was done for each, and any results, have not been supplied. Show the names, but do not write services, results, metrics, logos or testimonials for any brand until the client provides them. More client names are still to come.
 - Team bios for Erica and Bri: CEO-supplied. Moods, now-listening lines and trend lists in `content/site.ts` are build placeholders.
 - Character art (Y2K cartoon, `components/characters/Cutie.tsx`) and polaroid photos are placeholders awaiting real assets.
-- The status list in the team section is the look of the requested live-status feature; statuses are set by hand in `content/site.ts` and are not live yet.
-- Contact inbox (`hello@daisydigital.com`) is a placeholder.
+- The status list in the team section is the look of the requested live-status feature; statuses are set by hand in `content/site.ts` and are not live yet. The team wants to change their own statuses and edit team info themselves.
+- Domain: daisydigital.ca (GoDaddy); Instagram handle is the same.
+- Contact inbox (`hello@daisydigital.ca`) is a placeholder.
 
 ## Product Principles
 

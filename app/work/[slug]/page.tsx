@@ -31,7 +31,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
       <Section accent="blue" labelledBy="case-h">
         <Link href="/work/" className={s.back} transitionTypes={["tab-open"]}><Icon name="arrow" size={18} style={{ transform: "scaleX(-1)" }} /> all the work</Link>
 
-        <BrowserWindow as="article" tab={`${c.slug}_case_study`} icon="tab" url={`daisydigital.com/work/${c.slug}`} className={s.window}>
+        <BrowserWindow as="article" tab={`${c.slug}_case_study`} icon="tab" url={`daisydigital.ca/work/${c.slug}`} className={s.window}>
           <div className={s.top}>
             <div>
               <MicroLabel>case study</MicroLabel>

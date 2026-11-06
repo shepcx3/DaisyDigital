@@ -12,7 +12,6 @@ import s from "./TabNav.module.css";
 
 const isActive = (path: string, href: string) => (href === "/" ? path === "/" : path.startsWith(href.replace(/\/$/, "")));
 
-/** The top banner: one strip of brushed chrome. Becomes a bottom bar on phones. */
 export function TabNav() {
   const raw = usePathname() || "/";
   const path = raw.endsWith("/") ? raw : `${raw}/`;
@@ -29,28 +28,31 @@ export function TabNav() {
     <>
       <header className={s.top}>
         <div className={s.row}>
-          <Link href="/" className={s.logo} aria-label="daisy digital home" transitionTypes={["tab-open"]}>
-            <span className={s.mark} aria-hidden="true">DD</span>
-            <span className={s.word}>daisy digital</span>
-          </Link>
-          <nav className={s.links} aria-label="main">
+          <Link href="/" className={s.logo} aria-label="DD, daisy digital home" transitionTypes={["tab-open"]}>DD</Link>
+          <nav className={s.tabs} aria-label="main">
             {nav.map((t) => {
               const active = isActive(path, t.href);
               return (
-                <Link key={t.href} href={t.href} className={cx(s.link, active && s.active)} aria-current={active ? "page" : undefined} transitionTypes={["tab-open"]}>
+                <Link key={t.href} href={t.href} className={cx(s.tab, active && s.active)} aria-current={active ? "page" : undefined} transitionTypes={["tab-open"]}>
                   <Icon name={t.icon as IconName} size={16} />
                   {t.label}
+                  <span className={s.x} aria-hidden="true">×</span>
                 </Link>
               );
             })}
           </nav>
-          <div className={s.tools}>
-            <button type="button" className={s.plus} onClick={onPlus} aria-label="something cute (just for fun)">
-              <Icon name="sparkle" size={16} />
-            </button>
-            <button type="button" className={s.calm} aria-pressed={calm} onClick={() => setCalm(!calm)}>
-              calm mode {calm ? "on" : "off"}
-            </button>
+          <button type="button" className={s.plus} onClick={onPlus} aria-label="open a new tab (just for fun)">
+            <Icon name="plus" size={16} />
+          </button>
+          <button type="button" className={s.calm} aria-pressed={calm} onClick={() => setCalm(!calm)}>
+            <Icon name="sparkle" size={14} />
+            calm mode {calm ? "on" : "off"}
+          </button>
+        </div>
+        <div className={s.urlBar} aria-hidden="true">
+          <div className={s.urlInner}>
+            <span className={s.arrows}>‹ › ↻</span>
+            <span className={s.url}>https://daisydigital.ca<b>{path}</b></span>
           </div>
         </div>
       </header>

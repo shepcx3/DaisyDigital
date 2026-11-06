@@ -46,7 +46,7 @@ The site will be at `https://shepcx3.github.io/DaisyDigital/`. If you add a cust
 2. **Placeholders:** case study details, team moods/trends, and character art (`components/characters/Cutie.tsx`).
 3. **Photos:** pass `src` to `<Polaroid>` and the flash-photo treatment applies automatically.
 4. **Live status:** the status list reads each person's `presence` from `content/site.ts`, so it is set by hand and not live yet. Truly live statuses need a small outside service.
-5. **Philie and Jany** are made-up placeholders until the client sends real details.
+5. **Team notes:** profile lines come from the owner's notes; the bits still marked `[placeholder]` in `content/site.ts` are not final.
 6. **Password screen** (`/password`) is design-only. GitHub Pages can't protect a page; real protection needs server hosting such as Vercel.
 
 ## Easter eggs

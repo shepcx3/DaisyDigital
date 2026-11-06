@@ -100,7 +100,7 @@ export default function StyleguidePage() {
         <p>the building blocks. every page is made from these and nothing else.</p>
 
         <div className={s.demoGrid}>
-          <BrowserWindow tab="browser_window.exe" icon="tab" url="daisydigital.com/work/bloom">
+          <BrowserWindow tab="browser_window.exe" icon="tab" url="daisydigital.ca/work/bloom">
             <p style={{ margin: 0 }}>title bar with three dots, a tab label, an optional url bar, and a slot for anything.</p>
           </BrowserWindow>
 
@@ -146,7 +146,7 @@ export default function StyleguidePage() {
           </div>
 
           <div className={s.tile}>
-            <Sticker seed="sg-note"><StickyNote items={["check all 473 tabs", "spot the trend first"]} /></Sticker>
+            <Sticker seed="sg-note"><StickyNote items={["check all 400 tabs", "spot the trend first"]} /></Sticker>
             <TornPaper><b>torn paper</b> edge, made with an svg mask</TornPaper>
             <small>sticky note · torn paper</small>
           </div>

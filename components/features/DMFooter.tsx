@@ -74,7 +74,7 @@ export function DMFooter() {
 
       <HiddenDaisy id="footer" className={s.egg} />
       <p className={s.legal}>
-        © {new Date().getFullYear()} {brand.name} · {brand.tagline} · <Link href="/styleguide/">style guide</Link>
+        © {new Date().getFullYear()} {brand.name} · {brand.tagline} · <a href={`https://www.instagram.com/${brand.instagram}/`} rel="noopener">@{brand.instagram}</a> · <Link href="/styleguide/">style guide</Link>
       </p>
     </footer>
   );

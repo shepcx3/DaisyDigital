@@ -1,4 +1,4 @@
-.wrap { position: relative; scroll-margin-top: 80px; }
+.wrap { position: relative; scroll-margin-top: 120px; }
 .card { position: relative; box-shadow: 7px 9px 0 var(--hot); }
 .badge { position: absolute; top: 52px; right: 14px; rotate: 7deg; z-index: 2; }
 .top { display: grid; grid-template-columns: 140px 1fr; gap: 18px; align-items: center; }
@@ -15,8 +15,6 @@
 .table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 0.9rem; }
 .table th, .table td { text-align: left; vertical-align: top; padding: 7px 9px; border: 2px solid var(--ink); }
 .table th { width: 40%; background: var(--hot); font-family: var(--font-silkscreen); font-weight: 400; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-.dot { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: #22a35a; box-shadow: 0 0 0 2px var(--ink); }
-.trends { margin: 0; padding-left: 18px; }
 .bio { margin: 16px 0 0; }
 @media (max-width: 480px) {
   .top { grid-template-columns: 96px 1fr; gap: 14px; }

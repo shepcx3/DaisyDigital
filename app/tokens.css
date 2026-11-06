@@ -13,7 +13,7 @@
   --baby-blue: #a9d8ff;
   --offwhite: #fffbf5;
   --chrome: linear-gradient(135deg, #f4f4f7, #b9bcc6 40%, #ffffff 55%, #9a9eab);
-  --chrome-bar: linear-gradient(180deg, #fdfdff 0%, #dcdee6 40%, #aeb2be 50%, #eceef3 53%, #c6c8d2 100%);
+  --chrome-type: linear-gradient(180deg, #ffffff 0%, #e6e8ee 26%, #a2a6b4 47%, #5e6272 50%, #f6f7fa 53%, #cdd0da 74%, #8f93a1 100%);
   --ink: #2a1a4a;
   --ink-soft: #4d3b73; /* secondary text, still AA on offwhite + lavender */
 

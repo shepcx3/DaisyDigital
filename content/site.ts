@@ -9,7 +9,8 @@ export const brand = {
   tagline: "creative by nature",
   motto: "stay cute. stay current. stay on everyone's feed.",
   signoff: "love, daisy digital xo",
-  email: "hello@daisydigital.com", // [placeholder] real inbox
+  email: "hello@daisydigital.ca", // [placeholder] real inbox still to come from the client
+  instagram: "daisydigital.ca",
   // Formspree (or similar) endpoint for forms. Empty = forms fall back to opening the visitor's email app.
   formEndpoint: "",
 };
@@ -31,7 +32,7 @@ export const microcopy = {
   shy: "don't be shy",
   empty: "this daisy hasn't bloomed yet",
   lost: "lost in the scroll",
-  plusTab: ["new idea loading…", "another tab? obviously.", "tab 474 unlocked ✦", "this is how erica lives"],
+  plusTab: ["new idea loading…", "another tab? obviously.", "tab 401 unlocked ✦", "this is how erica lives"],
 };
 
 export const home = {
@@ -80,7 +81,16 @@ export const work: CaseStudy[] = [
   { slug: "dreamers-club", brand: "dreamers club", label: "case study", services: [], summary: "" },
 ];
 
-export const presenceLabels = { online: "online", available: "available", busy: "busy", away: "away" } as const;
+// Erica's list. [placeholder] statuses are set by hand below until the live version is built.
+export const presenceLabels = {
+  online: "online",
+  busy: "busy",
+  loggedOff: "logged off",
+  doomScrolling: "doom-scrolling",
+  brb: "brb",
+  onACall: "on a call",
+  vacay: "vacay mode",
+} as const;
 export type Presence = keyof typeof presenceLabels;
 
 export type Member = {
@@ -95,81 +105,76 @@ export type Member = {
   bio: string;
   mood: string;
   status: string;
-  presence: Presence; // what the status list shows. [placeholder] not live yet: set by hand here
-  presenceNote: string; // the little line under their name, like an old messenger status
+  presence: Presence;
   listening: string;
-  trends: [string, string, string];
+  trend: string;
 };
 
+// Roles, badges, profile lines and bios are from the owner's handwritten notes.
 export const team: Member[] = [
   {
     slug: "erica",
     name: "erica",
-    role: "the girl with 473 tabs open",
+    role: "the girl with 400 tabs open",
     title: "professional trend stalker",
     icon: "tab",
     icon2: "message",
     accent: "blue",
     badge: "404 DOLL",
-    bio: "determined to stay young, hip and culturally aware, professional trend stalker. chronically online and convinced she knows what's cool before everyone else does.",
-    mood: "already over it (it was trending tuesday)", // [placeholder]
+    bio: "determined to stay young and culturally aware. professional trend stalker. convinced she knows what's cool before everyone else does <3",
+    mood: "ahead of the game",
     status: "chronically online",
-    presence: "online",
-    presenceNote: "tab 474 is open", // [placeholder]
-    listening: "a sound that'll trend next week", // [placeholder]
-    trends: ["[trend one]", "[trend two]", "[trend three]"], // [placeholder]
+    presence: "doomScrolling",
+    listening: "jonas brothers earliest work",
+    trend: "ootd",
   },
   {
     slug: "bri",
     name: "bri",
     role: "the everything girl",
-    title: "ceo of moving in silence",
+    title: "moving in silence, behind the magic",
     icon: "bolt",
     icon2: "film",
     accent: "pink",
-    badge: "VIRAL",
-    bio: "ceo of moving in silence, from concepts to creations, she's the girl behind the magic. a little bit of everything and knows a thing or two about making a viral video. if it starts as a random thought, she'll probably turn it into a campaign.",
-    mood: "turning a random thought into a campaign", // [placeholder]
+    badge: "WHIMZ",
+    bio: "moving in silence, behind the magic. knows a thing or two about making a viral video.",
+    mood: "research scrolling",
     status: "recording",
     presence: "busy",
-    presenceNote: "brb, filming", // [placeholder]
-    listening: "the audio she's about to make viral", // [placeholder]
-    trends: ["[trend one]", "[trend two]", "[trend three]"], // [placeholder]
+    listening: "your favourite artist's favourite artist",
+    trend: "out of office ♡",
   },
-  // Philie and Jany are made-up placeholders until the client sends the real details.
   {
     slug: "philie",
     name: "philie",
-    role: "our photographer",
-    title: "always has a camera out",
+    role: "photography princess",
+    title: "the right angles will get you very far",
     icon: "camera",
     icon2: "sparkle",
     accent: "violet",
-    badge: "NEW",
-    bio: "our photographer. if it looks good on your feed, philie probably shot it. [placeholder bio]",
-    mood: "waiting for the good light", // [placeholder]
-    status: "on set",
-    presence: "away",
-    presenceNote: "chasing golden hour", // [placeholder]
-    listening: "the shutter, mostly", // [placeholder]
-    trends: ["[trend one]", "[trend two]", "[trend three]"], // [placeholder]
+    badge: "FLASHY",
+    bio: "wants to teach you the skills you need to grow. the right angles will get you very far.",
+    mood: "calculating",
+    status: "monitoring the next best lens",
+    presence: "brb",
+    listening: "the nerdiest podcast you can think of",
+    trend: "how to make your photos cinematic",
   },
   {
     slug: "jany",
     name: "jany",
-    role: "our model and middleman",
-    title: "knows everyone, somehow",
+    role: "model of the year",
+    title: "camera ready at all times",
     icon: "star",
     icon2: "message",
     accent: "pink",
-    badge: "NEW",
-    bio: "our model and middleman. in front of the camera, and in the middle of every group chat that gets it booked. [placeholder bio]",
-    mood: "camera ready, phone charged", // [placeholder]
-    status: "in the group chat",
-    presence: "available",
-    presenceNote: "text me", // [placeholder]
-    listening: "whatever's on at the shoot", // [placeholder]
-    trends: ["[trend one]", "[trend two]", "[trend three]"], // [placeholder]
+    badge: "ANGEL",
+    bio: "pretty face. nails always done. lashes on. camera ready at all times.",
+    mood: "nonchalant beauty",
+    status: "selfie mode on ✓",
+    presence: "online",
+    listening: "everyone else's playlist",
+    trend: "jellycat videos",
   },
 ];
 
@@ -214,7 +219,7 @@ export const footer = {
 };
 
 export const screens = {
-  notFound: { title: "lost in the scroll", body: "this daisy hasn't bloomed yet. the page you're looking for is probably in one of erica's 473 tabs." },
+  notFound: { title: "lost in the scroll", body: "this daisy hasn't bloomed yet. the page you're looking for is probably in one of erica's 400 tabs." },
   thanks: { title: "you're so on trend", body: "message received. we'll slide back into your inbox soon." },
   password: { title: "daisy digital", body: "this page is for the girls (and their clients) only. enter the password to peek." },
 };

@@ -5,10 +5,15 @@ import s from "./status.module.css";
 
 export const presenceColors: Record<Presence, string> = {
   online: "#22a35a",
-  available: "#2f8fe0",
   busy: "#e0356f",
-  away: "#e8a800",
+  loggedOff: "#9a9eab",
+  doomScrolling: "#7b4fd6",
+  brb: "#e8a800",
+  onACall: "#2f8fe0",
+  vacay: "#ff8fc7",
 };
+
+const isAround = (p: Presence) => p !== "loggedOff" && p !== "vacay";
 
 function StatusDaisy({ color }: { color: string }) {
   return (
@@ -26,18 +31,18 @@ function StatusDaisy({ color }: { color: string }) {
  * so this is the look of the feature; making it truly live needs a small outside service.
  */
 export function StatusList() {
-  const here = team.filter((m) => m.presence !== "away");
-  const away = team.filter((m) => m.presence === "away");
+  const here = team.filter((m) => isAround(m.presence));
+  const away = team.filter((m) => !isAround(m.presence));
   const groups = [
     { title: "around", people: here },
-    { title: "away", people: away },
+    { title: "logged off", people: away },
   ].filter((g) => g.people.length);
 
   return (
     <BrowserWindow tab="daisy_messenger" icon="message" className={s.window} bodyClassName={s.body}>
       {groups.map((g) => (
         <section key={g.title} aria-label={`${g.title} (${g.people.length})`}>
-          <h3 className={s.group}>{g.title} ({g.people.length})</h3>
+          <p className={s.group}>{g.title} ({g.people.length})</p>
           <ul className={s.list}>
             {g.people.map((m) => (
               <li key={m.slug}>
@@ -45,7 +50,7 @@ export function StatusList() {
                   <StatusDaisy color={presenceColors[m.presence]} />
                   <span className={s.text}>
                     <span className={s.line}><b>{m.name}</b> <span className={s.state}>({presenceLabels[m.presence]})</span></span>
-                    <span className={s.note}>{m.presenceNote}</span>
+                    <span className={s.note}>{m.status}</span>
                   </span>
                 </Link>
               </li>
