@@ -59,9 +59,9 @@ const LOOKS: Record<Who, Look> = {
       </g>
     ),
   },
-  // blonde space buns, swoopy fringe, lightning bolt clip, spinning film reel
+  // brunette space buns, swoopy fringe, lightning bolt clip, spinning film reel
   bri: {
-    skin: "#fbdcc4", skinShade: "#efbf9f", hair: ["#ffe08a", "#d99a3a"], iris: "#c2479b", lips: "#ff5c9e", top: "#ff8fc7", bottom: "#c9b6f0", boots: "#7b4fd6",
+    skin: "#fbdcc4", skinShade: "#efbf9f", hair: ["#9a6240", "#4f2c1b"], iris: "#c2479b", lips: "#ff5c9e", top: "#ff8fc7", bottom: "#c9b6f0", boots: "#7b4fd6",
     hairBack: (
       <>
         <circle cx="48" cy="34" r="27" />
