@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "components/features/hero.module.css"
+        ],
+        "createdAt": "2026-11-07T17:47:39.051Z",
+        "reason": "Client asked to keep the silver chrome title (feedback email) and user asked for it as 3D chrome"
+      }
+    ]
+  }
+}

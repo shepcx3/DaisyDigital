@@ -1,30 +1,53 @@
 .hero { padding-block: clamp(20px, 3vw, 36px) clamp(56px, 7vw, 84px); }
 .collage { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 18px; }
 
-/* the banner: the name in silver chrome, no box around it */
+/* the banner: the name as extruded 3D chrome, no box around it */
 .title { grid-column: 1 / -1; position: relative; }
 .wordmark {
-  isolation: isolate; margin: 0; white-space: nowrap;
+  --tilt-x: 0; --tilt-y: 0;
+  isolation: isolate; margin: 0 0 0.12em; white-space: nowrap;
   font-size: clamp(3.4rem, 16.2vw, 13.2rem); line-height: 1.1; letter-spacing: -0.035em; text-transform: lowercase;
-  filter: drop-shadow(3px 6px 5px rgba(59, 31, 115, 0.28));
+  transform: perspective(1600px) rotateX(calc(var(--tilt-y) * -9deg)) rotateY(calc(var(--tilt-x) * 12deg));
+  transition: transform 600ms var(--ease-out);
+  filter: drop-shadow(0.03em 0.07em 0.05em rgba(59, 31, 115, 0.3));
 }
+.wordmark[data-track="on"] { transition-duration: 180ms; }
 .chrome {
   position: relative; display: inline-block; color: transparent;
   background:
     linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.95) 50%, transparent 60%) no-repeat -160% 0 / 55% 100%,
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.85), transparent) no-repeat
+      calc(50% + var(--tilt-x) * 40%) calc(30% + var(--tilt-y) * 30%) / 60% 70%,
     var(--chrome-type);
   -webkit-background-clip: text; background-clip: text;
   animation: glint 1500ms var(--ease-out) 400ms 1;
 }
+/* the sides of the letters: lilac chrome stepping darker toward the back, ink edge at the very back */
 .chrome::before {
   content: attr(data-text); position: absolute; inset: 0; z-index: -1;
   color: var(--ink); -webkit-text-stroke: 0.06em var(--ink);
+  text-shadow:
+    0.006em 0.01em 0 #e4dff7, 0.012em 0.02em 0 #d3cdef, 0.018em 0.03em 0 #c3bbe6,
+    0.024em 0.04em 0 #b2a9dc, 0.03em 0.05em 0 #a297d0, 0.036em 0.06em 0 #9286c3,
+    0.042em 0.07em 0 #8275b5, 0.048em 0.08em 0 #7365a6, 0.054em 0.09em 0 #655696,
+    0.06em 0.1em 0 var(--ink), 0.064em 0.106em 0 var(--ink);
 }
 .wordmark:hover .chrome { animation: glint-hover 1100ms var(--ease-out); }
-@keyframes glint { to { background-position: 260% 0, 0 0; } }
-@keyframes glint-hover { to { background-position: 260% 0, 0 0; } }
+@keyframes glint { to { background-position: 260% 0, calc(50% + var(--tilt-x) * 40%) calc(30% + var(--tilt-y) * 30%), 0 0; } }
+@keyframes glint-hover { to { background-position: 260% 0, calc(50% + var(--tilt-x) * 40%) calc(30% + var(--tilt-y) * 30%), 0 0; } }
+/* touch screens: a slow sway instead of following a cursor */
+@media (pointer: coarse) {
+  html:not([data-calm="on"]) .wordmark { animation: sway3d 7s ease-in-out infinite; }
+}
+@keyframes sway3d {
+  0%, 100% { --tilt-x: -0.5; --tilt-y: -0.2; }
+  50% { --tilt-x: 0.5; --tilt-y: 0.15; }
+}
+@property --tilt-x { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --tilt-y { syntax: "<number>"; inherits: true; initial-value: 0; }
 
-.daisySlot { position: absolute; right: 0; bottom: -128px; width: clamp(120px, 15vw, 186px); aspect-ratio: 1; z-index: 4; }
+/* the 3D daisy sits below the name, beside the polaroids, never on top of the letters */
+.daisySlot { position: absolute; right: 0; top: 100%; width: clamp(120px, 13vw, 176px); aspect-ratio: 1; z-index: 4; }
 .flatDaisy { width: 100%; height: 100%; animation: spin 24s linear infinite; transition: opacity var(--dur-base); }
 .hidden { opacity: 0; }
 .canvas3d { position: absolute; inset: -18%; opacity: 0; transition: opacity var(--dur-slow) var(--ease-out); }
@@ -47,7 +70,7 @@
   .collage { display: flex; flex-direction: column; gap: 22px; }
   .wordmark { white-space: normal; font-size: clamp(4.4rem, 25vw, 11rem); line-height: 1; }
   .chrome { display: block; width: fit-content; }
-  .daisySlot { bottom: auto; top: 0; right: 0; width: clamp(84px, 24vw, 170px); }
+  .daisySlot { top: 0; right: 0; width: clamp(84px, 24vw, 170px); }
   .polaroids { display: flex; justify-content: center; }
   .polaroids > * { width: 46%; max-width: 210px; margin: 0; }
   .polaroids > * + * { margin-left: -6%; margin-top: 26px; }

@@ -2,6 +2,7 @@ import { Cutie } from "@/components/characters/Cutie";
 import { ProfileCard } from "@/components/characters/ProfileCard";
 import { StatusList } from "@/components/characters/StatusList";
 import { BuzzCta } from "@/components/features/BuzzCta";
+import { ChromeTitle } from "@/components/features/ChromeTitle";
 import { HeroDaisy } from "@/components/features/HeroDaisy";
 import { WorkCard } from "@/components/features/WorkCard";
 import h from "@/components/features/hero.module.css";
@@ -21,10 +22,7 @@ export default function Home() {
       <Section accent="pink" blooms className={h.hero}>
         <div className={h.collage}>
           <div className={h.title}>
-            <h1 className={h.wordmark} aria-label={brand.name}>
-              <span className={h.chrome} data-text="daisy" aria-hidden="true">daisy</span>{" "}
-              <span className={h.chrome} data-text="digital" aria-hidden="true">digital</span>
-            </h1>
+            <ChromeTitle label={brand.name} />
             <HeroDaisy />
           </div>
 
