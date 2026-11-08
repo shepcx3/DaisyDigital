@@ -69,15 +69,71 @@ export type CaseStudy = {
   services: string[]; // [placeholder] confirm what DD actually did for each brand
   summary: string;
   featured?: boolean;
+  /** Real photos from the client, in /public/work/<slug>/. The first photo is the cover. */
+  gallery?: { title: string; photos: Photo[] }[];
 };
+
+export type Photo = { file: string; caption: string; alt: string; landscape?: boolean };
 
 // No results or claims are written in until the client confirms them.
 export const work: CaseStudy[] = [
   { slug: "bloom", brand: "bloom", label: "case study", services: [], summary: "", featured: true },
   { slug: "glossier", brand: "glossier", label: "case study", services: [], summary: "", featured: true },
-  { slug: "lay-low", brand: "lay low", label: "case study", services: [], summary: "", featured: true },
+  {
+    slug: "lay-low", brand: "lay low", label: "case study", services: [], summary: "", featured: true,
+    gallery: [
+      {
+        title: "the content",
+        photos: [
+          { file: "matcha-latte", caption: "matcha + latte art", alt: "A matcha latte, a cappuccino with latte art and a glass of orange juice on a wooden table in the sun" },
+          { file: "orchard", caption: "orchard day", alt: "A hand holding an iced drink in a Lay Low cup up among apple tree branches" },
+          { file: "brunch", caption: "brunch spread", alt: "Eggs benedict with salad, an iced coffee and a matcha latte, seen from above" },
+          { file: "iced-matcha", caption: "matcha to go", alt: "Four iced matcha drinks in Lay Low cups in a carrier on a red bench" },
+          { file: "apple-bins", caption: "in the apple bins", alt: "An iced drink in a Lay Low cup sitting among bins of red apples" },
+          { file: "martinis", caption: "martini hour", alt: "Two martinis on a bar at night" },
+          { file: "dessert", caption: "dessert for the table", alt: "Plates of chocolate dessert and candles on a lace tablecloth, seen from above" },
+          { file: "apples-grass", caption: "apple season", alt: "An iced drink in a Lay Low cup in the grass between fallen apples" },
+          { file: "espresso-martini", caption: "espresso martini", alt: "A hand with red nails spooning into a frothy espresso drink topped with coffee beans" },
+          { file: "burger", caption: "burger + caesar", alt: "A tall burger and a caesar salad on a plate, with flowers on the table" },
+          { file: "apple-basket", caption: "fall basket", alt: "A basket of apples with a coffee cup, held against a red sweater" },
+          { file: "kale-salad", caption: "kale salad", alt: "A kale salad with a creamy drizzle, seen from above" },
+          { file: "pink-tote", caption: "pink tote, green booth", alt: "A pink tote bag on a green velvet banquette under a plant" },
+        ],
+      },
+      {
+        title: "the space",
+        photos: [
+          { file: "sketch", caption: "the first sketch", alt: "A hand-drawn sketch of a green banquette with plants, next to fabric swatches" },
+          { file: "swatches", caption: "picking the greens", alt: "Green paint chips and fabric swatches spread on a wooden table" },
+          { file: "the-room", caption: "the finished room", alt: "The finished cafe: a curved green velvet banquette, round wood tables and arched lights" },
+          { file: "storefront", caption: "lay low", alt: "The Lay Low storefront on a brick street", landscape: true },
+        ],
+      },
+    ],
+  },
   { slug: "strong", brand: "strong", label: "case study", services: [], summary: "" },
-  { slug: "holistically-hip", brand: "holistically hip", label: "case study", services: [], summary: "" },
+  {
+    slug: "holistically-hip", brand: "holistically hip", label: "case study", services: [], summary: "",
+    gallery: [
+      {
+        title: "the content",
+        photos: [
+          { file: "sign", caption: "holistically hip", alt: "The Holistically Hip sign above a woven basket of products" },
+          { file: "shelf-wall", caption: "the colour wall", alt: "A woman in a cap reaching up to a wall of colourful product shelves" },
+          { file: "fruit-packs", caption: "fruit packs", alt: "A hand holding four pastel fruit snack packs in the sun" },
+          { file: "collagen", caption: "bend collagen", alt: "A hand holding two Bend collagen pouches in front of the store window" },
+          { file: "snack-basket", caption: "snack basket", alt: "A white basket full of candy and snack bags on a wooden table" },
+          { file: "skin-essence", caption: "skin essence", alt: "Skin Essence skincare boxes surrounded by plants" },
+          { file: "salt-and-sage", caption: "salt & sage", alt: "Salt and Sage and Bubbly perfume boxes and a roller on a marble tray" },
+          { file: "candles", caption: "candle stack", alt: "Four jar candles stacked in front of a woven bag" },
+          { file: "sample-basket", caption: "sample basket", alt: "A basket full of sample packets on the pavement" },
+          { file: "deodorant", caption: "natural deodorant", alt: "Two boxes of natural deodorant held up in front of a plant" },
+          { file: "skin-essence-shelf", caption: "on the shelf", alt: "Skin Essence serums and creams on a white shelf with a display card" },
+          { file: "plant-corner", caption: "the plant corner", alt: "Tall leafy plants filling a bright corner of the shop" },
+        ],
+      },
+    ],
+  },
   { slug: "dreamers-club", brand: "dreamers club", label: "case study", services: [], summary: "" },
 ];
 

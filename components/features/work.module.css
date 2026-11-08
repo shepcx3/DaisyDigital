@@ -1,14 +1,15 @@
 .stickerFill { display: block; height: 100%; }
-.card { height: 100%; }
+.card { height: 100%; display: flex; flex-direction: column; }
 .link {
   display: grid; justify-items: center; align-content: center; gap: 12px; text-align: center;
   min-height: 150px; color: var(--ink); text-decoration: none;
 }
 a.link::after { content: ""; position: absolute; inset: 0; } /* whole card is clickable */
-.tile { transition: background var(--dur-base); }
+.tile { flex: 1; display: grid; transition: background var(--dur-base); }
 .grid > li:nth-child(3n+1) .tile { background: color-mix(in srgb, var(--bubblegum) 28%, var(--offwhite)); }
 .grid > li:nth-child(3n+2) .tile { background: color-mix(in srgb, var(--baby-blue) 34%, var(--offwhite)); }
 .grid > li:nth-child(3n) .tile { background: color-mix(in srgb, var(--lilac) 38%, var(--offwhite)); }
+.cover { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: var(--border); border-radius: var(--radius-sm); margin-bottom: 2px; }
 .soon { font-family: var(--font-instrument-serif); font-style: italic; font-size: 1.1rem; color: var(--ink-soft); }
 .brand { font-family: var(--font-fredoka); font-weight: 700; font-size: clamp(2rem, 3.4vw, 2.6rem); line-height: 1; letter-spacing: -0.02em; text-transform: lowercase; }
 .open { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 500; text-decoration: underline; text-decoration-style: wavy; text-decoration-color: var(--violet); text-underline-offset: 4px; }

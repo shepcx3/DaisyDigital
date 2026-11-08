@@ -6,6 +6,7 @@ import { BrowserWindow } from "@/components/system/BrowserWindow";
 import { Section } from "@/components/system/layout";
 import { Badge, Button, MicroLabel, Polaroid, Sticker } from "@/components/system/primitives";
 import { microcopy, work } from "@/content/site";
+import { asset } from "@/lib/utils";
 import s from "./case.module.css";
 
 export const dynamicParams = false;
@@ -25,6 +26,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   if (i < 0) notFound();
   const c = work[i];
   const next = work[(i + 1) % work.length];
+  const cover = c.gallery?.[0]?.photos[0];
 
   return (
     <main id="main">
@@ -40,9 +42,25 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
               {c.services.length > 0 && <p className={s.tags}>{c.services.map((t) => <Badge key={t}>{t}</Badge>)}</p>}
             </div>
             <Sticker seed={`case-${c.slug}`} dieCut className={s.pol}>
-              <Polaroid caption={c.brand} icon="film" tint="var(--baby-blue)" />
+              <Polaroid caption={c.brand} icon="film" tint="var(--baby-blue)" ratio={cover ? "3 / 4" : undefined}
+                src={cover && asset(`/work/${c.slug}/${cover.file}.webp`)} alt={cover?.alt} />
             </Sticker>
           </div>
+
+          {c.gallery?.map((g) => (
+            <section key={g.title} className={s.gallery} aria-labelledby={`g-${g.title}`}>
+              <h2 id={`g-${g.title}`}>{g.title}</h2>
+              <ul className={s.wall}>
+                {g.photos.map((p) => (
+                  <li key={p.file} className={p.landscape ? s.wide : undefined}>
+                    <Sticker seed={`${c.slug}-${p.file}`} max={2.5}>
+                      <Polaroid caption={p.caption} src={asset(`/work/${c.slug}/${p.file}.webp`)} alt={p.alt} ratio={p.landscape ? "3 / 2" : "3 / 4"} />
+                    </Sticker>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
 
           <div className={s.blocks}>
             {["the brief", "what we did", "the results"].map((h) => (

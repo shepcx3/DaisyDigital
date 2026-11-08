@@ -9,5 +9,9 @@
 .block { border: 2.5px dashed var(--ink); border-radius: var(--radius-md); padding: 18px; }
 .block h2 { font-size: 1.4rem; margin: 0 0 8px; text-transform: lowercase; }
 .empty { margin: 0; display: flex; align-items: center; gap: 6px; font-family: var(--font-instrument-serif); font-style: italic; font-size: 1.15rem; color: var(--ink-soft); }
+.gallery { margin-top: 40px; }
+.gallery h2 { font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin: 0 0 18px; text-transform: lowercase; }
+.wall { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 26px 22px; align-items: start; }
+.wide { grid-column: span 2; }
 .next { text-align: center; margin: 36px 0 0; }
-@media (max-width: 680px) { .top { grid-template-columns: 1fr; } .pol { max-width: 200px; justify-self: center; } }
+@media (max-width: 680px) { .top { grid-template-columns: 1fr; } .pol { max-width: 200px; justify-self: center; } .wall { grid-template-columns: 1fr 1fr; gap: 16px 14px; } }

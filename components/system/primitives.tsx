@@ -61,19 +61,19 @@ export function Button({ children, href, hot, glow, icon, type = "button", onCli
 }
 
 /* ---------- Polaroid ---------- */
-export function Polaroid({ caption, src, alt = "", icon = "sparkle", motionBlur, tint = "var(--lilac)" }: {
-  caption: string; src?: string; alt?: string; icon?: IconName; motionBlur?: boolean; tint?: string;
+export function Polaroid({ caption, src, alt = "", icon = "sparkle", motionBlur, tint = "var(--lilac)", ratio }: {
+  caption: string; src?: string; alt?: string; icon?: IconName; motionBlur?: boolean; tint?: string; ratio?: string;
 }) {
   return (
     <figure className={s.polaroid}>
-      <div className={cx(s.photo, motionBlur && s.motionBlur)} style={{ background: tint }}>
+      <div className={cx(s.photo, motionBlur && s.motionBlur)} style={{ background: tint, aspectRatio: ratio }}>
         {src ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={src} alt={alt} loading="lazy" />
+          <img src={src} alt={alt} loading="lazy" decoding="async" />
         ) : (
           <span className={s.placeholder} aria-hidden="true"><Icon name={icon} /></span>
         )}
-        <span className={s.flashFx} aria-hidden="true" />
+        {!src && <span className={s.flashFx} aria-hidden="true" />}
       </div>
       <figcaption className={s.caption}>{caption}</figcaption>
     </figure>
