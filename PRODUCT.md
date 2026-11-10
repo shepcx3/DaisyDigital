@@ -61,7 +61,7 @@ Voice: lowercase, playful, internet-native. Form labels and legal text stay clea
 - Character art (Y2K cartoon, `components/characters/Cutie.tsx`) and polaroid photos are placeholders awaiting real assets.
 - The status list in the team section is the look of the requested live-status feature; statuses are set by hand in `content/site.ts` and are not live yet. The team wants to change their own statuses and edit team info themselves.
 - Domain: daisydigital.ca (GoDaddy); Instagram handle is the same.
-- Contact inbox (`hello@daisydigital.ca`) is a placeholder.
+- Contact inbox: `hello@daisydigital.ca` (confirmed by Erica).
 
 ## Product Principles
 

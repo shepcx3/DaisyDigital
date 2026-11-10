@@ -9,7 +9,7 @@ export const brand = {
   tagline: "creative by nature",
   motto: "stay cute. stay current. stay on everyone's feed.",
   signoff: "love, daisy digital xo",
-  email: "hello@daisydigital.ca", // [placeholder] real inbox still to come from the client
+  email: "hello@daisydigital.ca", // confirmed by Erica
   instagram: "daisydigital.ca",
   // Formspree (or similar) endpoint for forms. Empty = forms fall back to opening the visitor's email app.
   formEndpoint: "",
