@@ -1,0 +1,58 @@
+rules_version = '2';
+
+// Daisy Digital team corner. Paste into Firebase console → Firestore → Rules → Publish.
+//
+// config/access (edited by hand in the console):
+//   admins:  ["erica@…", "bri@…"]          can edit every profile
+//   members: { philie: "…", jany: "…" }    each can edit only their own profile
+//
+// members/{slug}: the live status fields the website shows. Anyone can read them;
+// only the people above can write, and only these fields, with short text.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null && request.auth.token.email != null && request.auth.token.email_verified == true;
+    }
+    function me() {
+      return request.auth.token.email.lower();
+    }
+    function access() {
+      return get(/databases/$(database)/documents/config/access).data;
+    }
+    function isAdmin() {
+      return signedIn() && me() in access().admins;
+    }
+    function owns(slug) {
+      return signedIn() && slug in access().members && access().members[slug].lower() == me();
+    }
+    function shortText(d, k) {
+      return !(k in d) || (d[k] is string && d[k].size() <= 60);
+    }
+    function validMember(d) {
+      return d.keys().hasOnly(['presence', 'status', 'mood', 'listening', 'trend', 'updatedBy', 'updatedAt'])
+        && (!('presence' in d) || d.presence in ['online', 'busy', 'loggedOff', 'doomScrolling', 'brb', 'onACall', 'vacay'])
+        && shortText(d, 'status') && shortText(d, 'mood') && shortText(d, 'listening') && shortText(d, 'trend')
+        && d.updatedBy == request.auth.token.email
+        && d.updatedAt == request.time;
+    }
+
+    match /members/{slug} {
+      allow read: if true;
+      allow create, update: if (isAdmin() || owns(slug))
+        && slug in ['erica', 'bri', 'philie', 'jany']
+        && validMember(request.resource.data);
+      allow delete: if false;
+    }
+
+    match /config/access {
+      // only people on the list can see the list
+      allow read: if signedIn() && (me() in resource.data.admins || me() in resource.data.members.values());
+      allow write: if false; // change it in the Firebase console
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

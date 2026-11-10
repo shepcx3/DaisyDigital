@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { BrowserWindow } from "@/components/system/BrowserWindow";
-import { presenceLabels, team, type Presence } from "@/content/site";
+import { presenceLabels, type Presence } from "@/content/site";
+import { useLiveTeam } from "@/lib/live-team";
 import s from "./status.module.css";
 
 export const presenceColors: Record<Presence, string> = {
@@ -27,10 +30,11 @@ function StatusDaisy({ color }: { color: string }) {
 }
 
 /**
- * Old-school messenger contact list. Statuses come from content/site.ts for now,
- * so this is the look of the feature; making it truly live needs a small outside service.
+ * Old-school messenger contact list. Shows the built-in statuses from content/site.ts first,
+ * then whatever the girls last set in the team corner (when Firebase is switched on).
  */
 export function StatusList() {
+  const team = useLiveTeam();
   const here = team.filter((m) => isAround(m.presence));
   const away = team.filter((m) => !isAround(m.presence));
   const groups = [

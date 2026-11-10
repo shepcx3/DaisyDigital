@@ -37,7 +37,7 @@ From the CEO's brief: Daisy Digital is "chronically online, creatively curious a
   - **We're growing:** a watering can, then flowers blooming, opening a place to upload a resume and apply.
 - Current build also has: work case-study pages, thanks, password, 404, and an internal `/styleguide`.
 - Stack: Next.js 16 App Router, TypeScript, Tailwind v4, React Three Fiber, Motion. Static export (`output: "export"`) hosted on GitHub Pages under the `/DaisyDigital` base path. No server: forms post to a third-party endpoint (`brand.formEndpoint`, e.g. Formspree) or fall back to the visitor's email app. **Resume upload needs a form service that accepts files**; until one is set, the careers form can't take the file the brief asks for.
-- The `/password` screen is design-only; GitHub Pages cannot protect a page.
+- The team corner (`/login`) is a real sign-in on Firebase's free plan (Auth + Firestore, client-side). The page itself is public HTML; the data is protected by `firestore.rules`.
 - All copy lives in `content/site.ts` so the client can edit words without touching components. `[placeholder]` marks content still owed by the client.
 - Calm mode: follows reduced-motion and has a persisted nav toggle; it removes glitter, custom cursors, bee flight, the 3D daisy and the marquee.
 
@@ -59,7 +59,7 @@ Voice: lowercase, playful, internet-native. Form labels and legal text stay clea
 - Brands the CEO says they've worked with: **bloom, glossier, lay low, strong, holistically hip, dreamers club**, "and more". The names come from the CEO; what was done for each, and any results, have not been supplied. Show the names, but do not write services, results, metrics, logos or testimonials for any brand until the client provides them. More client names are still to come.
 - Team bios for Erica and Bri: CEO-supplied. Moods, now-listening lines and trend lists in `content/site.ts` are build placeholders.
 - Character art (Y2K cartoon, `components/characters/Cutie.tsx`) and polaroid photos are placeholders awaiting real assets.
-- The status list in the team section is the look of the requested live-status feature; statuses are set by hand in `content/site.ts` and are not live yet. The team wants to change their own statuses and edit team info themselves.
+- Statuses (status light, status, mood, listening, fav trend) are live once Firebase is connected: the girls change them in the team corner. Names, bios, badges and characters still live in `content/site.ts`; adding new members themselves is not built yet.
 - Domain: daisydigital.ca (GoDaddy); Instagram handle is the same.
 - Contact inbox: `hello@daisydigital.ca` (confirmed by Erica).
 

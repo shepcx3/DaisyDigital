@@ -47,7 +47,7 @@ The site will be at `https://shepcx3.github.io/DaisyDigital/`. If you add a cust
 3. **Photos:** pass `src` to `<Polaroid>` and the flash-photo treatment applies automatically.
 4. **Live status:** the status list reads each person's `presence` from `content/site.ts`, so it is set by hand and not live yet. Truly live statuses need a small outside service.
 5. **Team notes:** profile lines come from the owner's notes; the bits still marked `[placeholder]` in `content/site.ts` are not final.
-6. **Password screen** (`/password`) is design-only. GitHub Pages can't protect a page; real protection needs server hosting such as Vercel.
+6. **Team corner** (`/login`): the girls sign in (Google or an emailed link) and change their status. It runs on Firebase's free plan; setup steps are in `docs/team-corner-setup.md`, rules in `firestore.rules`. Until the Firebase values are set, the site shows the statuses from `content/site.ts`.
 
 ## Easter eggs
 

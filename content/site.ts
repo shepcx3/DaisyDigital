@@ -277,5 +277,25 @@ export const footer = {
 export const screens = {
   notFound: { title: "lost in the scroll", body: "this daisy hasn't bloomed yet. the page you're looking for is probably in one of erica's 400 tabs." },
   thanks: { title: "you're so on trend", body: "message received. we'll slide back into your inbox soon." },
-  password: { title: "daisy digital", body: "this page is for the girls (and their clients) only. enter the password to peek." },
+  login: {
+    title: "team corner",
+    body: "this page is for the girls only. sign in to change your status.",
+    google: "sign in with google",
+    emailLabel: "or get a sign-in link by email",
+    emailButton: "send link",
+    linkSent: "check your inbox for a sign-in link ✿",
+    confirmEmail: "pop in your email again to finish signing in",
+    notOnList: "this email isn't on the team list yet. ask erica or bri to add it.",
+    notSetUp: "the team corner switches on once it's connected (coming very soon ✿)",
+    failed: "that didn't work. try again?",
+  },
+  teamCorner: {
+    title: "team corner",
+    intro: "change your status here. it shows up on the site for everyone right away.",
+    save: "save",
+    saved: "saved ✿ it's live",
+    saveFailed: "that didn't save. check your connection and try again.",
+    signOut: "sign out",
+    fields: { presence: "status light", status: "status", mood: "mood", listening: "currently listening to", trend: "fav trend" },
+  },
 };
