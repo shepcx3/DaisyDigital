@@ -3,11 +3,15 @@
 import { useEffect, useSyncExternalStore } from "react";
 import { team, type Member } from "@/content/site";
 import { fetchLive, firebaseReady, merge, type LiveFields } from "./firebase";
+import { fetchSheet, sheetUrl } from "./sheet";
+
+// Firebase (team corner) if it's set up, otherwise the Google Sheet backup, otherwise built-in content.
+const source = firebaseReady ? fetchLive : sheetUrl ? fetchSheet : null;
 
 // One fetch per page load, shared by every component that shows the team.
 let current: Member[] = team;
 let started = false;
-let ready = !firebaseReady;
+let ready = !source;
 const listeners = new Set<() => void>();
 
 function set(live: Record<string, LiveFields>) {
@@ -17,10 +21,10 @@ function set(live: Record<string, LiveFields>) {
 }
 
 function load() {
-  if (started || !firebaseReady) return;
+  if (started || !source) return;
   started = true;
-  // If Firebase is unreachable, the built-in team simply stays up.
-  fetchLive().then(set, () => set({}));
+  // If the source is unreachable, the built-in team simply stays up.
+  source().then(set, () => set({}));
 }
 
 /** Lay one member's saved changes over the current team (the team corner calls this after saving). */
