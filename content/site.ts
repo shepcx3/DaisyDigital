@@ -77,8 +77,28 @@ export type Photo = { file: string; caption: string; alt: string; landscape?: bo
 
 // No results or claims are written in until the client confirms them.
 export const work: CaseStudy[] = [
-  { slug: "bloom", brand: "bloom", label: "case study", services: [], summary: "", featured: true },
-  { slug: "glossier", brand: "glossier", label: "case study", services: [], summary: "", featured: true },
+  {
+    slug: "holistically-hip", brand: "holistically hip", label: "case study", services: [], summary: "", featured: true,
+    gallery: [
+      {
+        title: "the content",
+        photos: [
+          { file: "sign", caption: "holistically hip", alt: "The Holistically Hip sign above a woven basket of products" },
+          { file: "shelf-wall", caption: "the colour wall", alt: "A woman in a cap reaching up to a wall of colourful product shelves" },
+          { file: "fruit-packs", caption: "fruit packs", alt: "A hand holding four pastel fruit snack packs in the sun" },
+          { file: "collagen", caption: "bend collagen", alt: "A hand holding two Bend collagen pouches in front of the store window" },
+          { file: "snack-basket", caption: "snack basket", alt: "A white basket full of candy and snack bags on a wooden table" },
+          { file: "skin-essence", caption: "skin essence", alt: "Skin Essence skincare boxes surrounded by plants" },
+          { file: "salt-and-sage", caption: "salt & sage", alt: "Salt and Sage and Bubbly perfume boxes and a roller on a marble tray" },
+          { file: "candles", caption: "candle stack", alt: "Four jar candles stacked in front of a woven bag" },
+          { file: "sample-basket", caption: "sample basket", alt: "A basket full of sample packets on the pavement" },
+          { file: "deodorant", caption: "natural deodorant", alt: "Two boxes of natural deodorant held up in front of a plant" },
+          { file: "skin-essence-shelf", caption: "on the shelf", alt: "Skin Essence serums and creams on a white shelf with a display card" },
+          { file: "plant-corner", caption: "the plant corner", alt: "Tall leafy plants filling a bright corner of the shop" },
+        ],
+      },
+    ],
+  },
   {
     slug: "lay-low", brand: "lay low", label: "case study", services: [], summary: "", featured: true,
     gallery: [
@@ -111,29 +131,9 @@ export const work: CaseStudy[] = [
       },
     ],
   },
+  { slug: "bloom", brand: "bloom", label: "case study", services: [], summary: "", featured: true },
+  { slug: "glossier", brand: "glossier", label: "case study", services: [], summary: "", featured: true },
   { slug: "strong", brand: "strong", label: "case study", services: [], summary: "" },
-  {
-    slug: "holistically-hip", brand: "holistically hip", label: "case study", services: [], summary: "",
-    gallery: [
-      {
-        title: "the content",
-        photos: [
-          { file: "sign", caption: "holistically hip", alt: "The Holistically Hip sign above a woven basket of products" },
-          { file: "shelf-wall", caption: "the colour wall", alt: "A woman in a cap reaching up to a wall of colourful product shelves" },
-          { file: "fruit-packs", caption: "fruit packs", alt: "A hand holding four pastel fruit snack packs in the sun" },
-          { file: "collagen", caption: "bend collagen", alt: "A hand holding two Bend collagen pouches in front of the store window" },
-          { file: "snack-basket", caption: "snack basket", alt: "A white basket full of candy and snack bags on a wooden table" },
-          { file: "skin-essence", caption: "skin essence", alt: "Skin Essence skincare boxes surrounded by plants" },
-          { file: "salt-and-sage", caption: "salt & sage", alt: "Salt and Sage and Bubbly perfume boxes and a roller on a marble tray" },
-          { file: "candles", caption: "candle stack", alt: "Four jar candles stacked in front of a woven bag" },
-          { file: "sample-basket", caption: "sample basket", alt: "A basket full of sample packets on the pavement" },
-          { file: "deodorant", caption: "natural deodorant", alt: "Two boxes of natural deodorant held up in front of a plant" },
-          { file: "skin-essence-shelf", caption: "on the shelf", alt: "Skin Essence serums and creams on a white shelf with a display card" },
-          { file: "plant-corner", caption: "the plant corner", alt: "Tall leafy plants filling a bright corner of the shop" },
-        ],
-      },
-    ],
-  },
   { slug: "dreamers-club", brand: "dreamers club", label: "case study", services: [], summary: "" },
 ];
 
